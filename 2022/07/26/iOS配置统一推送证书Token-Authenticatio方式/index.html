@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>iOS配置统一推送证书Token Authenticatio方式 | 火三 | 学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜</title>
+
+  
+  <meta name="author" content="火三">
+  
+
+  
+  <meta name="description" content="学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮">
+  
+
+  
+  
+  <meta name="keywords" content="iOS">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="iOS配置统一推送证书Token Authenticatio方式"/>
+
+  <meta property="og:site_name" content="火三"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="火三" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">火三</a>
+    </h1>
+    <p class="site-description">学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives/">归档</a></li>
+      
+        <li><a href="/tags/">标签</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>iOS配置统一推送证书Token Authenticatio方式</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2022/07/26/iOS配置统一推送证书Token-Authenticatio方式/" rel="bookmark">
+        <time class="entry-date published" datetime="2022-07-26T09:55:22.000Z">
+          2022-07-26
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><blockquote>
+<p>由于开发者账号下面配置的app越来越多，对于推送证书的配置有了新的要求，证书尽可能只需要配置一次就可以。</p>
+</blockquote>
+<span id="more"></span>
+<hr>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><p>Apple提供了一种新的方案，在开发者网站上，可以创建keys，极光推送目前也已经对这种方式进行了支持，创建好的key，保存到本地会是一个p8类型的文件，创建流程如下123</p>
+<br>
+
+<p>第一步: 点击key盘边的“+”号按钮</p>
+<br>
+
+<center>
+<img src="/2022/07/26/iOS%E9%85%8D%E7%BD%AE%E7%BB%9F%E4%B8%80%E6%8E%A8%E9%80%81%E8%AF%81%E4%B9%A6Token-Authenticatio%E6%96%B9%E5%BC%8F/20220727150128.jpg" width="300">
+<br>
+<i>图一</i>
+</center>
+<br>
+
+<p>第二步：然后勾选apple push notification service </p>
+<br>
+<center>
+<img src="/2022/07/26/iOS%E9%85%8D%E7%BD%AE%E7%BB%9F%E4%B8%80%E6%8E%A8%E9%80%81%E8%AF%81%E4%B9%A6Token-Authenticatio%E6%96%B9%E5%BC%8F/20220727150216.jpg" width="300">
+<br><font color="white" style="background-color:clear"><i>图二</i></font>
+</center>
+
+<br>
+第三步：输入要创建的keys名称，然后点击右侧的regiest按钮
+
+<br>
+
+<center>
+<img src="/2022/07/26/iOS%E9%85%8D%E7%BD%AE%E7%BB%9F%E4%B8%80%E6%8E%A8%E9%80%81%E8%AF%81%E4%B9%A6Token-Authenticatio%E6%96%B9%E5%BC%8F/20220727150327.jpg" width="300">
+<br>
+
+<p><i>图三</i></p>
+</center>
+<br>
+第四部：登入极光平台，然后选中刚才生成的P8文件，之后，挨个填入对应的信息
+
+<br>
+<center>
+<img src="/2022/07/26/iOS%E9%85%8D%E7%BD%AE%E7%BB%9F%E4%B8%80%E6%8E%A8%E9%80%81%E8%AF%81%E4%B9%A6Token-Authenticatio%E6%96%B9%E5%BC%8F/20220727154208.jpg" width="300">
+<br>
+<i>图四</i>
+</center>
+
+<hr>
+<br>
+备注
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.jiguang.cn/">极光推送网站</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.apple.com/account/resources/authkeys/list">apple配置地址</a></li>
+</ul>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/iOS/">iOS</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2022 火三
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>
