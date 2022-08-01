@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ReactNative学习二-Component | 火三 | 学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜</title>
+
+  
+  <meta name="author" content="火三">
+  
+
+  
+  <meta name="description" content="学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮">
+  
+
+  
+  
+  <meta name="keywords" content="ReactNative">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="ReactNative学习二-Component"/>
+
+  <meta property="og:site_name" content="火三"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="火三" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">火三</a>
+    </h1>
+    <p class="site-description">学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives/">归档</a></li>
+      
+        <li><a href="/tags/">标签</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>ReactNative学习二-Component</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2022/07/27/ReactNative学习二-Component/" rel="bookmark">
+        <time class="entry-date published" datetime="2022-07-27T08:43:09.000Z">
+          2022-07-27
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="搭建静态页面的原则"><a href="#搭建静态页面的原则" class="headerlink" title="搭建静态页面的原则"></a>搭建静态页面的原则</h1><h2 id="单一责任原则"><a href="#单一责任原则" class="headerlink" title="单一责任原则"></a>单一责任原则</h2><pre><code>每个组件都应该只有一个单一的功能，并且这个组件和其他组件没有相互依赖
+</code></pre>
+<span id="more"></span>
+<h3 id="分析一段代码来学习一个组件的基本构成"><a href="#分析一段代码来学习一个组件的基本构成" class="headerlink" title="分析一段代码来学习一个组件的基本构成"></a>分析一段代码来学习一个组件的基本构成</h3><p><img src="https://static001.geekbang.org/resource/image/e2/94/e22a8ff50c7bbdb637ed6eb42892dd94.png?wh=1000x594"></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Product</span>(<span class="params">&#123;product = &#123;name: <span class="string">&#x27;苹果&#x27;</span>, price: <span class="string">&#x27;1元&#x27;</span>&#125; &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;&#123;flexDirection:</span> &#x27;<span class="attr">row</span>&#x27;, <span class="attr">marginTop:</span> <span class="attr">5</span>&#125;&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;&#123;flex:</span> <span class="attr">1</span>&#125;&#125;&gt;</span>&#123;product.name&#125;<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;&#123;width:</span> <span class="attr">50</span>&#125;&#125;&gt;</span>&#123;product.price&#125;<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>第一步，导出组件。还记得单一责任原则吗？一个组件的责任要单一，一个文件的责任也要单一。因此通常一个文件中只有一个组件，用export default就可以将它导出，让其他文件import引入使用。</li>
+<li>第二步，定义函数。组件是一种特殊的函数。组件名字的首字母一定是大写的，示例中的Product是组件，因此它的 P是大写的（当然，还有类组件，但用得会越来越少，这里我们不探讨，你可以自己额外搜些资料）。</li>
+<li>第三步，接收入参。组件能从其父组件中接参数，而且组件是函数，因此该参数就是函数的入参，通常命名为属性 props。props 是一个对象，因此也可以直接对它进行解构，直接获取对象中的值。示例代码中用的就是用解构的方式来获取参数的，它直接获取了product参数，这里的product 是数据因此p是小写的。</li>
+<li>第四步，返回 JSX。组件的返回值就是 JSX，我们前面也提到过，它是用来描述 UI 页面的，JSX 最终生成的是视图元素、文字元素。这里我们初始化了一个元素，和两个元素。</li>
+</ol>
+<h3 id="组件的文件结构"><a href="#组件的文件结构" class="headerlink" title="组件的文件结构"></a>组件的文件结构</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="title class_">AppRegistry</span>.<span class="title function_">registerComponent</span>(<span class="string">&#x27;appName&#x27;</span>, <span class="function">() =&gt;</span> <span class="title class_">App</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// App.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PRODUCTS</span> = [</span><br><span class="line">  &#123;<span class="attr">category</span>: <span class="string">&#x27;水果&#x27;</span>, <span class="attr">price</span>: <span class="string">&#x27;￥1&#x27;</span>, <span class="attr">name</span>: <span class="string">&#x27;PingGuo&#x27;</span>&#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">SafeAreaView</span> <span class="attr">style</span>=<span class="string">&#123;&#123;marginHorizontal:</span> <span class="attr">30</span>&#125;&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">ProductTable</span> <span class="attr">products</span>=<span class="string">&#123;PRODUCTS&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">SafeAreaView</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ProductTable.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Category</span> <span class="keyword">from</span> <span class="string">&#x27;./Category&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Product</span> <span class="keyword">from</span> <span class="string">&#x27;./Product&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">ProductTable</span>(<span class="params">&#123;products&#125;</span>)&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  &lt;Category category=&#123;products[i].category&#125;</span><br><span class="line">  // ...</span><br><span class="line">  &lt;Product product=&#123;products[i]&#125; </span><br><span class="line">  // ...  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Category.js</span><br><span class="line">export default function Category(&#123;category&#125;)&#123;&#125;</span><br><span class="line"></span><br><span class="line">// ProductTable.js</span><br><span class="line">export default function Product(&#123;product&#125;) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>index.js 文件：它是根文件，在该文件中registerComponent方法，会调用根组件 App，然后开始逐级调用，渲染应用；</li>
+<li>App 组件：在 App 组件中，用于表示商品信息的数据变量 PRODUCTS，在被调用时会通过 ProductTable 组件的 products 属性传递下去；</li>
+<li>ProductTable 组件：它被 App 组件调用后，它的调用入参就是 products。products 是一个数组，数组中的每一项就是 Product组件的入参product。每一项中的分类，就是Category 组件的入参 category。还是一样，组件首字母是大写的，属性、入参的首字母是小写的；</li>
+<li>Category 组件：它会被 ProductTable 组件调用两次，第一次调用接收的入参category是“水果”，第二次是“蔬菜”；</li>
+<li>Product 组件：它会被 ProductTable 组件调用 6 次，生成 6 个不同的商品元素，展示在手机屏幕上。</li>
+</ol>
+<p><strong>简而言之，组件间的数据是单向流动的，是逐层往下传递</strong></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/ReactNative/">ReactNative</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2022 火三
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>

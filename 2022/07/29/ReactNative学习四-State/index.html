@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ReactNative学习四:State | 火三 | 学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜</title>
+
+  
+  <meta name="author" content="火三">
+  
+
+  
+  <meta name="description" content="学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮">
+  
+
+  
+  
+  <meta name="keywords" content="ReactNative">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="ReactNative学习四:State"/>
+
+  <meta property="og:site_name" content="火三"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="火三" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">火三</a>
+    </h1>
+    <p class="site-description">学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives/">归档</a></li>
+      
+        <li><a href="/tags/">标签</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>ReactNative学习四:State</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2022/07/29/ReactNative学习四-State/" rel="bookmark">
+        <time class="entry-date published" datetime="2022-07-29T02:41:37.000Z">
+          2022-07-29
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="如何让页面动起来？"><a href="#如何让页面动起来？" class="headerlink" title="如何让页面动起来？"></a>如何让页面动起来？</h1><p>如图是一个简单的购物车页面的UI，分别用来展示商品的名称、价格和数量。</p>
+<span id="more"></span>
+<p><img src="https://static001.geekbang.org/resource/image/dd/9e/dd69765bb8fcb1f9dffyy2df4d2b789e.png?wh=1000x784"></p>
+<h2 id="选择状态"><a href="#选择状态" class="headerlink" title="选择状态"></a>选择状态</h2><p>这个页面需要一个标示页面请求正常or失败的状态，这里使用枚举值</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">RequestStatus</span> = &#123;</span><br><span class="line">    <span class="variable constant_">IDLE</span> = <span class="string">&#x27;IDLE&#x27;</span>,</span><br><span class="line">    <span class="variable constant_">PENDING</span> = <span class="string">&#x27;PENDING&#x27;</span>,</span><br><span class="line">    <span class="variable constant_">SUCCESS</span> = <span class="string">&#x27;SUCCESS&#x27;</span>,</span><br><span class="line">    <span class="variable constant_">ERROR</span> = <span class="string">&#x27;ERROR&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此外还需要一个列表对象用来展示数据,采用</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [products, setProduct] = <span class="title function_">useState</span>([]);</span><br></pre></td></tr></table></figure>
+<p>即一个枚举和一个数组来展示页面。</p>
+<h2 id="状态更新"><a href="#状态更新" class="headerlink" title="状态更新"></a>状态更新</h2><h3 id="基础数据类型的状态更新"><a href="#基础数据类型的状态更新" class="headerlink" title="基础数据类型的状态更新"></a>基础数据类型的状态更新</h3><p>还是看下面的代码，以更新数量为例，首先注册了状态 “count”,然后在组件的返回函数里面，通过按钮的点击事件，调用setCount(count+1)，来达到更新count值的效果。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">count</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> [count ,setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Text</span>&gt;</span>&#123;count&#125;<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Button</span> <span class="attr">title</span>=<span class="string">&quot;+&quot;</span> <span class="attr">onPress</span>=<span class="string">&#123;()</span>=&gt;</span>setCount(count + 1)&#125;&gt;<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Button</span> <span class="attr">title</span>=<span class="string">&quot;-&quot;</span> <span class="attr">onPress</span>=<span class="string">&#123;()</span>=&gt;</span>setCount((count-1)&gt;0? count-1 : 0)&#125;&gt;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#125;;</span></span><br><span class="line"><span class="language-xml">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="引用数据类型的状态更新"><a href="#引用数据类型的状态更新" class="headerlink" title="引用数据类型的状态更新"></a>引用数据类型的状态更新</h3><p>引用数据类型的更新， 需要先析构原数据对象，然后再重新赋值，才可达到更新的效果，对象析构的写法<br><code>...countObjects</code></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">setCountObject</span>(&#123;...countObject, <span class="attr">num</span>: countObject.<span class="property">num</span>+<span class="number">1</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newCountArray = [...newCountArray]</span><br><span class="line">newCountArray[<span class="number">0</span>]++;</span><br><span class="line"><span class="title function_">setCountArray</span>(newCountArray)</span><br></pre></td></tr></table></figure>
+
+<h2 id="加载图片"><a href="#加载图片" class="headerlink" title="加载图片"></a>加载图片</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>使用方法</th>
+<th>底层scheme</th>
+<th>使用建议</th>
+<th>使用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>静态图片资源</td>
+<td>require(‘./dianxin’)</td>
+<td>file//</td>
+<td>跟随bundle压缩包下发</td>
+<td>关键图片</td>
+</tr>
+<tr>
+<td>网络图片</td>
+<td>{uri:’<a target="_blank" rel="noopener" href="https://cdn.dianxin.com/..,.png&#39;}">https://cdn.dianxin.com/..,.png&#39;}</a></td>
+<td>http 或 https</td>
+<td>自研图片管理工具</td>
+<td>大部分场景</td>
+</tr>
+<tr>
+<td>宿主应用图片</td>
+<td>uri:’dainxin’</td>
+<td>file://或 asset://</td>
+<td>不建议</td>
+<td>复用场景</td>
+</tr>
+<tr>
+<td>Base64图片</td>
+<td>‘uri’:’data:image/jpeg,base64…..’</td>
+<td>data:mime/type;base64</td>
+<td>自研图片管理工具</td>
+<td>小图或者关键图</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/ReactNative/">ReactNative</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2022 火三
+    
+  </p>
+</footer>
+    
+    
+  </div>
+</div>
+</body>
+</html>
