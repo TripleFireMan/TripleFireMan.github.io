@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="技术交流大纲交流背景入职一个多月，通过阅读公司的技术资料，结合自己多年的开发经验，分享一些好的，对项目有益的想法及落地方案，此外对项目的理解，提一些个人的看法，有什么不足&#x2F;不对的地方，希望各位同事查漏补缺">
+<meta property="og:type" content="article">
+<meta property="og:title" content="火三">
+<meta property="og:url" content="http://example.com/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/index.html">
+<meta property="og:site_name" content="火三">
+<meta property="og:description" content="技术交流大纲交流背景入职一个多月，通过阅读公司的技术资料，结合自己多年的开发经验，分享一些好的，对项目有益的想法及落地方案，此外对项目的理解，提一些个人的看法，有什么不足&#x2F;不对的地方，希望各位同事查漏补缺">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pt-starimg.didistatic.com/static/starimg/img/WRUdiWDsw71626696344680.jpg">
+<meta property="og:image" content="http://example.com/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/IMG_0315.PNG">
+<meta property="og:image" content="http://example.com/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/IMG_0316.PNG">
+<meta property="og:image" content="http://example.com/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/IMG_0317.PNG">
+<meta property="og:image" content="http://example.com/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/%E7%BB%98%E5%9B%BE3.png">
+<meta property="og:image" content="http://example.com/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/%E7%BB%98%E5%9B%BE1.png">
+<meta property="og:image" content="http://example.com/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/20220811113542.jpg">
+<meta property="og:image" content="http://example.com/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/20220811114519.jpg">
+<meta property="og:image" content="http://example.com/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/20220811114847.jpg">
+<meta property="og:image" content="http://example.com/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/20220811115217.jpg">
+<meta property="og:image" content="http://example.com/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/20220811115226.jpg">
+<meta property="article:published_time" content="2022-08-08T00:51:50.067Z">
+<meta property="article:modified_time" content="2022-08-19T07:00:33.859Z">
+<meta property="article:author" content="火三">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pt-starimg.didistatic.com/static/starimg/img/WRUdiWDsw71626696344680.jpg">
+
+<link rel="canonical" href="http://example.com/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | 火三</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">火三</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="火三">
+      <meta itemprop="description" content="学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="火三">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-08 08:51:50" itemprop="dateCreated datePublished" datetime="2022-08-08T08:51:50+08:00">2022-08-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-19 15:00:33" itemprop="dateModified" datetime="2022-08-19T15:00:33+08:00">2022-08-19</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="技术交流大纲"><a href="#技术交流大纲" class="headerlink" title="技术交流大纲"></a>技术交流大纲</h3><h3 id="交流背景"><a href="#交流背景" class="headerlink" title="交流背景"></a>交流背景</h3><p>入职一个多月，通过阅读公司的技术资料，结合自己多年的开发经验，分享一些好的，对项目有益的想法及落地方案，此外对项目的理解，提一些个人的看法，有什么不足/不对的地方，希望各位同事查漏补缺</p>
+<span id="more"></span>
+
+<h3 id="关于调试工具"><a href="#关于调试工具" class="headerlink" title="关于调试工具"></a>关于调试工具</h3><h4 id="DoraemonKit"><a href="#DoraemonKit" class="headerlink" title="DoraemonKit"></a>DoraemonKit</h4><p><img src="https://pt-starimg.didistatic.com/static/starimg/img/WRUdiWDsw71626696344680.jpg"></p>
+<table>
+<img src="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/IMG_0315.PNG" width="100">
+<img src="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/IMG_0316.PNG" width="100">
+<img src="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/IMG_0317.PNG" width="100"></table>
+目前在建龙物流端，接入了Dokit，此外根据 
+
+<p><a target="_blank" rel="noopener" href="https://www.dokit.cn/">官方文档</a>设计了两个插件，</p>
+<ol>
+<li>一个是用来切换正式和测试环境，</li>
+<li>一个是根据页面classname来跳转对于空页面（用于调试UI）</li>
+</ol>
+<p>接入说明:<br>插件的接入主要分下面几步，<br>第一步： 创建一个插件Vc，用来承载插件功能,具体开发功能，用户自定义<br>第二步： 实例化一个插件类，实现协议<strong>DoraemonPluginProtocol</strong></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 该代理方法是点击插件按钮时会触发</span></span><br><span class="line">- (<span class="type">void</span>) pluginDidLoad&#123;</span><br><span class="line">    <span class="comment">/// 如创建页面，push到堆栈中</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第三步：将插件挂载到dokit的首页上</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[DoraemonManager shareInstance] addPluginWithTitle:<span class="string">@&quot;环境切换&quot;</span> icon:<span class="string">@&quot;doraemon_default&quot;</span> desc:<span class="string">@&quot;用于app内部环境切换功能&quot;</span> pluginName:<span class="string">@&quot;KCEnvPlugin&quot;</span> atModule:<span class="string">@&quot;业务专区&quot;</span>];</span><br></pre></td></tr></table></figure>
+<p>插件的目录结构如下，有兴趣的同事可以去看一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">└── KCLogistics</span><br><span class="line">    └── KCModules</span><br><span class="line">        └── KCDebugModule</span><br><span class="line">            └── Module</span><br><span class="line">                ├── KCDebugModule.h</span><br><span class="line">                ├── KCDebugModule.m</span><br><span class="line">                ├── KCDebugVCJumpPlugin.h</span><br><span class="line">                ├── KCDebugVCJumpPlugin.m</span><br><span class="line">                ├── KCDebugVcJumpVC.h</span><br><span class="line">                ├── KCDebugVcJumpVC.m</span><br><span class="line">                ├── KCEnvChangeVC.h</span><br><span class="line">                ├── KCEnvChangeVC.m</span><br><span class="line">                ├── KCEnvPlugin.h</span><br><span class="line">                └── KCEnvPlugin.m</span><br></pre></td></tr></table></figure>
+<h3 id="关于项目组件化"><a href="#关于项目组件化" class="headerlink" title="关于项目组件化"></a>关于项目组件化</h3><p>组件化的必要性，项目目前分为快成物流、快成司机、建龙司机、建龙物流、晋能物流、晋能司机。项目的管理主要靠创建不同的代码仓以及分支来管理代码。<br>我的想法是粒度大一点，类似YYKit这种，弄一个全家桶，然后内部弄一些子pod库，然后项目直接引用这个全家桶，减少一些重复基建工作。<br>一些前置条件<br>大概的步骤，按以下几步进行<br><strong>1. 搭建一个公司内部的私有pod源 ✅<br>2. 项目进行梳理，拆分解耦基建组件库 ✅<br>3. 拉分支，集成私有库，删除旧源码 ❌<br>4. 测试，上线</strong> ❌<br><img src="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/%E7%BB%98%E5%9B%BE3.png"></p>
+<h3 id="线上监控"><a href="#线上监控" class="headerlink" title="线上监控"></a>线上监控</h3><p>线上监控的一个思路，主要是对接bugly、钉钉、服务端。<br>目前我们项目里面已经接入了bugly监控，所以线上的监控也可以应用bugly提供的数据内容进行hook，然后需要服务端提供一个接口。将bugly每天产生的数据，进行一个再处理，将我们关注的数据进行一个汇总。用钉钉机器人发送到对应的群里。<br><br><br><img src="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/%E7%BB%98%E5%9B%BE1.png" width="200/"></p>
+<h3 id="动态化"><a href="#动态化" class="headerlink" title="动态化"></a>动态化</h3><p>目前的项目，还没有动态化的能力，这方面是否考虑接入RN或者其他动态化能力<br>如果接入的话，个人建议接入RN，今年RN底层架构有了一个大的升级，从之前的JSCore引擎升级Hermes，新引擎比老引擎通信性能有了3倍的提升，启动性能也有2倍的提升<br><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/article/499434">RN新架构介绍</a></p>
+<h3 id="关于协同"><a href="#关于协同" class="headerlink" title="关于协同"></a>关于协同</h3><h4 id="工程代码书写规范"><a href="#工程代码书写规范" class="headerlink" title="工程代码书写规范"></a>工程代码书写规范</h4><p><a target="_blank" rel="noopener" href="https://www.teambition.com/project/5f61ff0cb3b6270044a5fb3e/app/5eba5fba6a92214d420a3219/workspaces/5f61ff0ccedb4b001615a1cc/docs/60c1ac9c4e1683000198ed38">快成iOS代码规范</a></p>
+<table>
+<thead>
+<tr>
+<th>规范名称</th>
+<th>说明</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>命名规范</td>
+<td>大驼峰规则与小驼峰原则</td>
+<td><br> <font size="1" color="red">NameTextField(大驼峰),<br>nameTextField(小驼峰)</font></td>
+</tr>
+<tr>
+<td>项目命名</td>
+<td>大驼峰</td>
+<td><br> <font size="1" color="red">AoRiseProject</font></td>
+</tr>
+<tr>
+<td>Bundle Identifier 命名</td>
+<td>反域名命名</td>
+<td><br> <font size="1" color="red">com.jianlongkuaicheng.driver</font></td>
+</tr>
+<tr>
+<td>类名</td>
+<td>大驼峰命名。一般是：前缀 + 功能 + 类型</td>
+<td><br> <font size="1" color="red"> KC + Login + ViewController</font></td>
+</tr>
+<tr>
+<td>VC结构分区</td>
+<td>代码结构分区</td>
+<td><img src="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/20220811113542.jpg"></td>
+</tr>
+<tr>
+<td>变量和方法</td>
+<td>小驼峰</td>
+<td><font size="1">- (void)addTrailerWithParams:(NSMutableDictionary *)params{}</font></td>
+</tr>
+<tr>
+<td>常量</td>
+<td><font size="2">宏：大写KC + 大驼峰 <br>全局常量：工程前+缀全大写<br></font></td>
+<td><font size="1">#define KCUserAgeKey @“userAgeKey”<br>extern const NSString KC_USER_AGE_KEY</font></td>
+</tr>
+<tr>
+<td>参数名</td>
+<td>小驼峰命名</td>
+<td><font size="1">- (instancetype)initWithFrame:(CGRect)frame myCarViewItemClickBlock:(myCarViewItemClickBlock)itemClick myCarViewSearchPlateBlock:(myCarViewSearchPlateBlock)searchPlate;</font></td>
+</tr>
+<tr>
+<td>资源文件规范</td>
+<td><font size="1">用途_模块名_逻辑名称<br>用途_模块名_颜色<br>用途_逻辑名称<br>用途_颜色</font></td>
+<td><img src="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/20220811114519.jpg"></td>
+</tr>
+<tr>
+<td>文件夹命名</td>
+<td>实体文件夹,首字母要大写</td>
+<td><font size="1">Model，View，Controller，Tool，Other，Service</font></td>
+</tr>
+<tr>
+<td>版本规范</td>
+<td>采用A.B.C 三位数字命名</td>
+<td><img src="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/20220811114847.jpg"></td>
+</tr>
+<tr>
+<td>注释规范</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>方法注释</td>
+<td>方法外部统一用option + command + / ，方法内部统一用//注释</td>
+<td><img src="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/20220811115217.jpg"></td>
+</tr>
+<tr>
+<td>模型注释</td>
+<td>///注释</td>
+<td><img src="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/20220811115226.jpg"></td>
+</tr>
+<tr>
+<td>分支规范</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Merge规范</td>
+<td><font size="2">严格执行gitlab的merge request<br>禁止feature之间进行merge操作<br>merge顺序：feature-&gt;release-&gt;master-&gt;feature</font></td>
+<td></td>
+</tr>
+<tr>
+<td>commit规范</td>
+<td><font size="2">原则：明确提交的版本/项目/改动点<br>[哪个项目+哪个版本?+模块?]-ADD/MOD/FIX/DELETE：desc</font></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="语法检查"><a href="#语法检查" class="headerlink" title="语法检查"></a>语法检查</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42524762/article/details/117080911">c语言编程规范检查clang,使用Xcode开发iOS语法检查的Clang插件
+</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/IOSSHAN/article/details/120656030">链接器：符号是怎么绑定到地址上的？</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/07/29/ReactNative%E5%AD%A6%E4%B9%A0%E5%9B%9B-State/" rel="prev" title="ReactNative学习四:State">
+      <i class="fa fa-chevron-left"></i> ReactNative学习四:State
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/09/Tree%E5%91%BD%E4%BB%A4%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" rel="next" title="Tree命令及简单使用">
+      Tree命令及简单使用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81%E5%A4%A7%E7%BA%B2"><span class="nav-number">1.</span> <span class="nav-text">技术交流大纲</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E6%B5%81%E8%83%8C%E6%99%AF"><span class="nav-number">2.</span> <span class="nav-text">交流背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-number">3.</span> <span class="nav-text">关于调试工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DoraemonKit"><span class="nav-number">3.1.</span> <span class="nav-text">DoraemonKit</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E9%A1%B9%E7%9B%AE%E7%BB%84%E4%BB%B6%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">关于项目组件化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E7%9B%91%E6%8E%A7"><span class="nav-number">5.</span> <span class="nav-text">线上监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%8C%96"><span class="nav-number">6.</span> <span class="nav-text">动态化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%8D%8F%E5%90%8C"><span class="nav-number">7.</span> <span class="nav-text">关于协同</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E7%A8%8B%E4%BB%A3%E7%A0%81%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83"><span class="nav-number">7.1.</span> <span class="nav-text">工程代码书写规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E6%A3%80%E6%9F%A5"><span class="nav-number">7.2.</span> <span class="nav-text">语法检查</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">火三</p>
+  <div class="site-description" itemprop="description">学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">火三</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,89 +1,202 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="并发编程指南">
+<meta property="og:type" content="article">
+<meta property="og:title" content="译 ios并发编程指南">
+<meta property="og:url" content="http://example.com/2016/08/27/[%E8%AF%91]%20ios%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="火三">
+<meta property="og:description" content="并发编程指南">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ock9zbzms.bkt.clouddn.com/translationconcurrency.png">
+<meta property="article:published_time" content="2016-08-27T13:28:47.000Z">
+<meta property="article:modified_time" content="2022-07-26T02:55:08.678Z">
+<meta property="article:author" content="火三">
+<meta property="article:tag" content="翻译">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ock9zbzms.bkt.clouddn.com/translationconcurrency.png">
+
+<link rel="canonical" href="http://example.com/2016/08/27/[%E8%AF%91]%20ios%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>译 ios并发编程指南 | 火三</title>
   
-  <title>译 ios并发编程指南 | 火三 | 学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜</title>
-
-  
-  <meta name="author" content="火三">
-  
-
-  
-  <meta name="description" content="学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮">
-  
-
-  
-  
-  <meta name="keywords" content="翻译">
-  
-
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-  <meta property="og:title" content="译 ios并发编程指南"/>
-
-  <meta property="og:site_name" content="火三"/>
-
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
-
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="火三" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-<meta name="generator" content="Hexo 5.4.2"></head>
 
 
-<body>
-<div class="blog">
-  <div class="content">
 
-    <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">火三</a>
-    </h1>
-    <p class="site-description">学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜</p>
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">主页</a></li>
-      
-        <li><a href="/archives/">归档</a></li>
-      
-        <li><a href="/tags/">标签</a></li>
-      
-    </ul>
-  </nav>
-</header>
 
-    <main class="site-main posts-loop">
-    <article>
+  <div class="site-meta">
 
-  
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">火三</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
     
-    <h3 class="article-title"><span>译 ios并发编程指南</span></h3>
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
     
   
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2016/08/27/[%E8%AF%91]%20ios%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/">
 
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2016/08/27/[译] ios并发编程指南/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-08-27T13:28:47.000Z">
-          2016-08-27
-        </time>
-      </a>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="火三">
+      <meta itemprop="description" content="学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮">
     </span>
-  </div>
 
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="火三">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          译 ios并发编程指南
+        </h1>
 
-  
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-  <div class="article-content">
-    <div class="entry">
+              <time title="创建时间：2016-08-27 21:28:47" itemprop="dateCreated datePublished" datetime="2016-08-27T21:28:47+08:00">2016-08-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-26 10:55:08" itemprop="dateModified" datetime="2022-07-26T10:55:08+08:00">2022-07-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
         <p><a href="#1">并发编程指南</a></p>
 <span id="more"></span>
@@ -167,30 +280,182 @@
 <h3 id="3-9-4-等待操作对象的完成"><a href="#3-9-4-等待操作对象的完成" class="headerlink" title="3.9.4 等待操作对象的完成"></a><a href="#4">3.9.4 等待操作对象的完成</a></h3><p>为了获取最佳的性能，你应该尽可能的让操作对象并发执行，让系统去干更多的事情，在你执行操作对象任务的时候，如果创建一个操作对象的时候，同时希望获得了操作对象的结果，你可以使用waitUntilFinished：方法来阻塞代码继续执行，直到这个操作对象执行完成。通常来讲，这是最好的方式去避免你能帮到它的时候，阻塞当前线程也许是一个比较好的解决方法。但这也带来了更多的同步性，而限制了整体的可并发性。 你绝不允许在主线程中调用这个方法，你最好在子线程或者其他的线程操作中这么做，阻塞主线程将会降低程序的可响应性。 除了等待一个任务完成，你可以等待一个操作队列所有的任务执行完成，通过调用waitUntilAllOperationsAreFinished，当你等待一个操作队列任务完成的时候，避免在别的线程中添加任务给它，以防延长等待时间。</p>
 <h3 id="3-9-5-挂起和恢复操作队列"><a href="#3-9-5-挂起和恢复操作队列" class="headerlink" title="3.9.5 挂起和恢复操作队列"></a><a href="#4">3.9.5 挂起和恢复操作队列</a></h3><p>如果你想中途终止一个操作队列的话，你可以挂起相应的操作队列，使用setSuspended方法，挂起一个操作队列并不会导致正在执行的操作任务终止。它只是会阻止别的操作对象（操作队列中的）不去执行，你可能会在用户想暂停任务的时候挂起所有操作，因为用户还期望在某个时候恢复这些任务。</p>
 
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/翻译/">翻译</a>
-    </span>
-    
-
     </div>
 
     
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag"># 翻译</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/08/27/%E7%82%B9%E7%82%B9%E6%BB%B4%E6%BB%B4%EF%BC%9AHTTPS%E5%92%8CHTTP%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="prev" title="点点滴滴：HTTPS和HTTP的区别">
+      <i class="fa fa-chevron-left"></i> 点点滴滴：HTTPS和HTTP的区别
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/12/29/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8subline-text2-%E4%BD%9C%E4%B8%BAmarkdown%E7%9A%84%E7%BC%96%E8%BE%91%E5%B7%A5%E5%85%B7/" rel="next" title="如何使用subline-text2-作为markdown的编辑工具">
+      如何使用subline-text2-作为markdown的编辑工具 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
-</article>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91"><span class="nav-number">1.</span> <span class="nav-text">并发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%B9%B6%E5%8F%91%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 并发的概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%96%87%E6%A1%A3%E7%9A%84%E7%BB%84%E7%BB%87"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 文档的组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E4%B8%80%E4%BA%9B%E4%B8%93%E4%B8%9A%E5%90%8D%E8%AF%8D"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 一些专业名词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E5%85%B6%E4%BB%96"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%B9%B6%E5%8F%91%E5%8F%8A%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.</span> <span class="nav-text">2 并发及程序设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%92%8C%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 并发编程和程序设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E4%BB%8E%E7%BA%BF%E7%A8%8B%E5%BC%80%E5%8F%91%E4%B8%AD%E8%B5%B0%E5%87%BA%E6%9D%A5"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 从线程开发中走出来</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-%E5%88%86%E5%8F%91%E9%98%9F%E5%88%97"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 分发队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-%E5%88%86%E5%8F%91%E8%B5%84%E6%BA%90"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 分发资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-%E6%93%8D%E4%BD%9C%E9%98%9F%E5%88%97"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3 操作队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 异步编程技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-%E6%98%8E%E7%A1%AE%E7%A8%8B%E5%BA%8F%E6%9C%9F%E6%9C%9B%E7%9A%84%E8%A1%A8%E7%8E%B0"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 明确程序期望的表现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2-%E5%8D%95%E4%BD%8D%E5%B7%A5%E4%BD%9C%E7%9A%84%E5%8F%AF%E6%89%A7%E8%A1%8C%E5%9B%A0%E5%AD%90"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 单位工作的可执行因子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3-%E5%8C%BA%E5%88%86%E4%BD%A0%E9%9C%80%E8%A6%81%E4%BB%80%E4%B9%88%E9%98%9F%E5%88%97"><span class="nav-number">2.3.3.</span> <span class="nav-text">2.3.3 区分你需要什么队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4-%E6%8F%90%E5%8D%87%E6%89%A7%E8%A1%8C%E6%95%88%E7%8E%87%E7%9A%84%E8%B4%B4%E5%A3%AB"><span class="nav-number">2.3.4.</span> <span class="nav-text">2.3.4 提升执行效率的贴士</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E6%80%A7%E8%83%BD%E7%9B%B8%E5%85%B3"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 性能相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-%E5%B9%B6%E5%8F%91%E5%92%8C%E5%85%B6%E4%BB%96%E6%8A%80%E6%9C%AF"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 并发和其他技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1-OpenGL%E5%92%8C%E5%B9%B6%E5%8F%91"><span class="nav-number">2.5.1.</span> <span class="nav-text">2.5.1 OpenGL和并发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-2-%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B"><span class="nav-number">2.5.2.</span> <span class="nav-text">2.5.2 何时使用线程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E6%93%8D%E4%BD%9C%E9%98%9F%E5%88%97"><span class="nav-number">3.</span> <span class="nav-text">3 操作队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E5%85%B3%E4%BA%8E%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 关于操作对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E5%90%8C%E6%97%B6VS%E9%9D%9E%E5%90%8C%E6%97%B6%E6%93%8D%E4%BD%9C"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 同时VS非同时操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AANSInocationOperation%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 创建一个NSInocationOperation对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AANSBlockOperation%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 创建一个NSBlockOperation对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5-%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 定义一个自定义的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-1-%E6%89%A7%E8%A1%8Cmain%E4%BB%BB%E5%8A%A1"><span class="nav-number">3.5.1.</span> <span class="nav-text">3.5.1 执行main任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-2-%E5%93%8D%E5%BA%94%E5%8F%96%E6%B6%88%E4%BA%8B%E4%BB%B6"><span class="nav-number">3.5.2.</span> <span class="nav-text">3.5.2 响应取消事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-3-%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E5%8F%AF%E5%B9%B6%E5%8F%91%E6%89%A7%E8%A1%8C%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">3.5.3.</span> <span class="nav-text">3.5.3 定义一个可并发执行的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-4-%E7%BB%B4%E6%8A%A4KVO%E7%9A%84%E5%85%BC%E5%AE%B9"><span class="nav-number">3.5.4.</span> <span class="nav-text">3.5.4 维护KVO的兼容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%89%A7%E8%A1%8C%E8%A1%8C%E4%B8%BA"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 自定义一个操作对象的执行行为</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-1-%E8%AE%BE%E7%BD%AE%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB"><span class="nav-number">3.6.1.</span> <span class="nav-text">3.6.1 设置依赖关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-2-%E6%94%B9%E5%8F%98%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%89%A7%E8%A1%8C%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">3.6.2.</span> <span class="nav-text">3.6.2 改变操作对象的执行优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-3-%E6%94%B9%E5%8F%98%E4%BE%9D%E9%99%84%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">3.6.3.</span> <span class="nav-text">3.6.3 改变依附线程的优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-4-%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA%E5%AE%8C%E6%88%90%E5%90%8E%E7%9A%84%E5%9B%9E%E8%B0%83block"><span class="nav-number">3.6.4.</span> <span class="nav-text">3.6.4 设置一个完成后的回调block</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7-%E5%85%B3%E4%BA%8E%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%80%E4%BA%9BTips"><span class="nav-number">3.7.</span> <span class="nav-text">3.7 关于实现一个操作对象的一些Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-1-%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98"><span class="nav-number">3.7.1.</span> <span class="nav-text">3.7.1 管理操作对象的内存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-1-1-%E9%81%BF%E5%85%8D%E4%BE%9D%E9%9D%A0%E7%BA%BF%E7%A8%8B%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE"><span class="nav-number">3.7.1.1.</span> <span class="nav-text">3.7.1.1 避免依靠线程存储数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-1-2-%E5%A6%82%E6%9E%9C%E9%9C%80%E8%A6%81%E7%9A%84%E8%AF%9D%E4%BF%9D%E6%8C%81%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BC%95%E7%94%A8"><span class="nav-number">3.7.1.2.</span> <span class="nav-text">3.7.1.2 如果需要的话保持操作对象的引用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-2-%E5%A4%84%E7%90%86%E9%94%99%E8%AF%AF%E5%92%8C%E5%BC%82%E5%B8%B8"><span class="nav-number">3.7.2.</span> <span class="nav-text">3.7.2 处理错误和异常</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-8-%E5%86%B3%E5%AE%9A%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1%E5%90%88%E9%80%82%E7%9A%84%E6%95%B0%E9%87%8F%EF%BC%8C%E4%B8%8D%E8%A6%81%E5%A4%AA%E5%A4%9A%EF%BC%8C%E4%B9%9F%E4%B8%8D%E8%A6%81%E5%A4%AA%E5%B0%91"><span class="nav-number">3.8.</span> <span class="nav-text">3.8 决定操作对象合适的数量，不要太多，也不要太少</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-9-%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%89%A7%E8%A1%8C"><span class="nav-number">3.9.</span> <span class="nav-text">3.9 操作对象的执行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-9-1-%E6%B7%BB%E5%8A%A0%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1%E5%88%B0%E6%93%8D%E4%BD%9C%E9%98%9F%E5%88%97%E4%B8%AD"><span class="nav-number">3.9.1.</span> <span class="nav-text">3.9.1 添加操作对象到操作队列中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-9-2-%E6%89%8B%E5%8A%A8%E6%89%A7%E8%A1%8C%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.9.2.</span> <span class="nav-text">3.9.2 手动执行操作对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-9-3-%E5%8F%96%E6%B6%88%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.9.3.</span> <span class="nav-text">3.9.3 取消操作对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-9-4-%E7%AD%89%E5%BE%85%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%AE%8C%E6%88%90"><span class="nav-number">3.9.4.</span> <span class="nav-text">3.9.4 等待操作对象的完成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-9-5-%E6%8C%82%E8%B5%B7%E5%92%8C%E6%81%A2%E5%A4%8D%E6%93%8D%E4%BD%9C%E9%98%9F%E5%88%97"><span class="nav-number">3.9.5.</span> <span class="nav-text">3.9.5 挂起和恢复操作队列</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">火三</p>
+  <div class="site-description" itemprop="description">学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">火三</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
 
   
 
@@ -199,21 +464,18 @@
 
 
 
-    </main>
 
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2022 火三
-    
-  </p>
-</footer>
-    
-    
-  </div>
-</div>
+
+
+
+
+
+
+
+
+  
+
+  
+
 </body>
 </html>
