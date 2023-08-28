@@ -39,7 +39,7 @@
 <meta property="og:image" content="http://example.com/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/20220811115217.jpg">
 <meta property="og:image" content="http://example.com/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/20220811115226.jpg">
 <meta property="article:published_time" content="2022-08-08T00:51:50.067Z">
-<meta property="article:modified_time" content="2022-08-19T07:00:33.859Z">
+<meta property="article:modified_time" content="2022-09-02T08:57:03.873Z">
 <meta property="article:author" content="火三">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://pt-starimg.didistatic.com/static/starimg/img/WRUdiWDsw71626696344680.jpg">
@@ -193,7 +193,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-19 15:00:33" itemprop="dateModified" datetime="2022-08-19T15:00:33+08:00">2022-08-19</time>
+                <time title="修改时间：2022-09-02 16:57:03" itemprop="dateModified" datetime="2022-09-02T16:57:03+08:00">2022-09-02</time>
               </span>
 
           
@@ -228,9 +228,20 @@
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[DoraemonManager shareInstance] addPluginWithTitle:<span class="string">@&quot;环境切换&quot;</span> icon:<span class="string">@&quot;doraemon_default&quot;</span> desc:<span class="string">@&quot;用于app内部环境切换功能&quot;</span> pluginName:<span class="string">@&quot;KCEnvPlugin&quot;</span> atModule:<span class="string">@&quot;业务专区&quot;</span>];</span><br></pre></td></tr></table></figure>
 <p>插件的目录结构如下，有兴趣的同事可以去看一下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">└── KCLogistics</span><br><span class="line">    └── KCModules</span><br><span class="line">        └── KCDebugModule</span><br><span class="line">            └── Module</span><br><span class="line">                ├── KCDebugModule.h</span><br><span class="line">                ├── KCDebugModule.m</span><br><span class="line">                ├── KCDebugVCJumpPlugin.h</span><br><span class="line">                ├── KCDebugVCJumpPlugin.m</span><br><span class="line">                ├── KCDebugVcJumpVC.h</span><br><span class="line">                ├── KCDebugVcJumpVC.m</span><br><span class="line">                ├── KCEnvChangeVC.h</span><br><span class="line">                ├── KCEnvChangeVC.m</span><br><span class="line">                ├── KCEnvPlugin.h</span><br><span class="line">                └── KCEnvPlugin.m</span><br></pre></td></tr></table></figure>
-<h3 id="关于项目组件化"><a href="#关于项目组件化" class="headerlink" title="关于项目组件化"></a>关于项目组件化</h3><p>组件化的必要性，项目目前分为快成物流、快成司机、建龙司机、建龙物流、晋能物流、晋能司机。项目的管理主要靠创建不同的代码仓以及分支来管理代码。<br>我的想法是粒度大一点，类似YYKit这种，弄一个全家桶，然后内部弄一些子pod库，然后项目直接引用这个全家桶，减少一些重复基建工作。<br>一些前置条件<br>大概的步骤，按以下几步进行<br><strong>1. 搭建一个公司内部的私有pod源 ✅<br>2. 项目进行梳理，拆分解耦基建组件库 ✅<br>3. 拉分支，集成私有库，删除旧源码 ❌<br>4. 测试，上线</strong> ❌<br><img src="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/%E7%BB%98%E5%9B%BE3.png"></p>
-<h3 id="线上监控"><a href="#线上监控" class="headerlink" title="线上监控"></a>线上监控</h3><p>线上监控的一个思路，主要是对接bugly、钉钉、服务端。<br>目前我们项目里面已经接入了bugly监控，所以线上的监控也可以应用bugly提供的数据内容进行hook，然后需要服务端提供一个接口。将bugly每天产生的数据，进行一个再处理，将我们关注的数据进行一个汇总。用钉钉机器人发送到对应的群里。<br><br><br><img src="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/%E7%BB%98%E5%9B%BE1.png" width="200/"></p>
-<h3 id="动态化"><a href="#动态化" class="headerlink" title="动态化"></a>动态化</h3><p>目前的项目，还没有动态化的能力，这方面是否考虑接入RN或者其他动态化能力<br>如果接入的话，个人建议接入RN，今年RN底层架构有了一个大的升级，从之前的JSCore引擎升级Hermes，新引擎比老引擎通信性能有了3倍的提升，启动性能也有2倍的提升<br><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/article/499434">RN新架构介绍</a></p>
+<h3 id="关于项目组件化"><a href="#关于项目组件化" class="headerlink" title="关于项目组件化"></a>关于项目组件化</h3><p>组件化的必要性，项目目前分为快成物流、快成司机、建龙司机、建龙物流、晋能物流、晋能司机。项目的管理主要靠创建不同的代码仓以及分支来管理代码。<br>我的想法是粒度大一点，类似YYKit这种，弄一个全家桶，然后内部弄一些子pod库，然后项目直接引用这个全家桶，减少一些重复基建工作。<br>一些前置条件<br>大概的步骤，按以下几步进行</p>
+<ol>
+<li>搭建一个公司内部的私有pod源             ✅</li>
+<li>项目进行梳理，拆分解耦基建组件库           ✅</li>
+<li>拉分支，集成私有库，删除旧源码             ❌    </li>
+<li>测试，上线**                           ❌<br><img src="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/%E7%BB%98%E5%9B%BE3.png"><h3 id="线上监控"><a href="#线上监控" class="headerlink" title="线上监控"></a>线上监控</h3>线上监控的一个思路，主要是对接bugly、钉钉、服务端。<br>目前我们项目里面已经接入了bugly监控，所以线上的监控也可以应用bugly提供的数据内容进行hook，然后需要服务端提供一个接口。将bugly每天产生的数据，进行一个再处理，将我们关注的数据进行一个汇总。用钉钉机器人发送到对应的群里。<br>
+<img src="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/%E7%BB%98%E5%9B%BE1.png" width="200/">
+### 动态化
+目前的项目，还没有动态化的能力，这方面是否考虑接入RN或者其他动态化能力
+如果接入的话，个人建议接入RN，今年RN底层架构有了一个大的升级，从之前的JSCore引擎升级Hermes，新引擎比老引擎通信性能有了3倍的提升，启动性能也有2倍的提升
+[RN新架构介绍](https://time.geekbang.org/column/article/499434)
+
+</li>
+</ol>
 <h3 id="关于协同"><a href="#关于协同" class="headerlink" title="关于协同"></a>关于协同</h3><h4 id="工程代码书写规范"><a href="#工程代码书写规范" class="headerlink" title="工程代码书写规范"></a>工程代码书写规范</h4><p><a target="_blank" rel="noopener" href="https://www.teambition.com/project/5f61ff0cb3b6270044a5fb3e/app/5eba5fba6a92214d420a3219/workspaces/5f61ff0ccedb4b001615a1cc/docs/60c1ac9c4e1683000198ed38">快成iOS代码规范</a></p>
 <table>
 <thead>
@@ -408,7 +419,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81%E5%A4%A7%E7%BA%B2"><span class="nav-number">1.</span> <span class="nav-text">技术交流大纲</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E6%B5%81%E8%83%8C%E6%99%AF"><span class="nav-number">2.</span> <span class="nav-text">交流背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-number">3.</span> <span class="nav-text">关于调试工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DoraemonKit"><span class="nav-number">3.1.</span> <span class="nav-text">DoraemonKit</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E9%A1%B9%E7%9B%AE%E7%BB%84%E4%BB%B6%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">关于项目组件化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E7%9B%91%E6%8E%A7"><span class="nav-number">5.</span> <span class="nav-text">线上监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%8C%96"><span class="nav-number">6.</span> <span class="nav-text">动态化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%8D%8F%E5%90%8C"><span class="nav-number">7.</span> <span class="nav-text">关于协同</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E7%A8%8B%E4%BB%A3%E7%A0%81%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83"><span class="nav-number">7.1.</span> <span class="nav-text">工程代码书写规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E6%A3%80%E6%9F%A5"><span class="nav-number">7.2.</span> <span class="nav-text">语法检查</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81%E5%A4%A7%E7%BA%B2"><span class="nav-number">1.</span> <span class="nav-text">技术交流大纲</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E6%B5%81%E8%83%8C%E6%99%AF"><span class="nav-number">2.</span> <span class="nav-text">交流背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-number">3.</span> <span class="nav-text">关于调试工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DoraemonKit"><span class="nav-number">3.1.</span> <span class="nav-text">DoraemonKit</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E9%A1%B9%E7%9B%AE%E7%BB%84%E4%BB%B6%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">关于项目组件化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E7%9B%91%E6%8E%A7"><span class="nav-number">5.</span> <span class="nav-text">线上监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%8D%8F%E5%90%8C"><span class="nav-number">6.</span> <span class="nav-text">关于协同</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E7%A8%8B%E4%BB%A3%E7%A0%81%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83"><span class="nav-number">6.1.</span> <span class="nav-text">工程代码书写规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E6%A3%80%E6%9F%A5"><span class="nav-number">6.2.</span> <span class="nav-text">语法检查</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -422,7 +433,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -463,7 +474,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -31,9 +31,9 @@
 <meta property="og:image" content="https://s2.51cto.com/images/blog/202201/04133345_61d3dc39890237557.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_30,g_se,x_10,y_10,shadow_20,type_ZmFuZ3poZW5naGVpdGk=">
 <meta property="og:image" content="https://s2.51cto.com/images/blog/202201/04133345_61d3dc39c5bd785555.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_30,g_se,x_10,y_10,shadow_20,type_ZmFuZ3poZW5naGVpdGk=">
 <meta property="article:published_time" content="2022-08-09T03:18:34.000Z">
-<meta property="article:modified_time" content="2022-08-19T07:05:11.808Z">
+<meta property="article:modified_time" content="2022-08-26T04:04:16.584Z">
 <meta property="article:author" content="火三">
-<meta property="article:tag" content="转">
+<meta property="article:tag" content="工具">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s2.51cto.com/images/blog/202201/04133345_61d3dc39695e056821.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_30,g_se,x_10,y_10,shadow_20,type_ZmFuZ3poZW5naGVpdGk=">
 
@@ -186,8 +186,17 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-19 15:05:11" itemprop="dateModified" datetime="2022-08-19T15:05:11+08:00">2022-08-19</time>
+                <time title="修改时间：2022-08-26 12:04:16" itemprop="dateModified" datetime="2022-08-26T12:04:16+08:00">2022-08-26</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AC/" itemprop="url" rel="index"><span itemprop="name">转</span></a>
+                </span>
+            </span>
 
           
 
@@ -209,13 +218,222 @@
 <p>几个比较常规的用法</p>
 <ol>
 <li>显示目录结构<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree</span><br></pre></td></tr></table></figure>
-<img src="https://s2.51cto.com/images/blog/202201/04133345_61d3dc39695e056821.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_30,g_se,x_10,y_10,shadow_20,type_ZmFuZ3poZW5naGVpdGk="></li>
-<li>包含隐藏文件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree -a</span><br></pre></td></tr></table></figure>
-<img src="https://s2.51cto.com/images/blog/202201/04133345_61d3dc39890237557.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_30,g_se,x_10,y_10,shadow_20,type_ZmFuZ3poZW5naGVpdGk="></li>
-<li>控制深度（假设为2）<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree -L 2</span><br></pre></td></tr></table></figure>
-<img src="https://s2.51cto.com/images/blog/202201/04133345_61d3dc39c5bd785555.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_30,g_se,x_10,y_10,shadow_20,type_ZmFuZ3poZW5naGVpdGk="></li>
+
+</li>
 </ol>
-<p>更多的选项<br>|选项|说明|<br>| - | - |<br>|-a|显示所有文件，包含隐藏文件。|<br>|-d|只显示目录。|<br>|-l|跟踪符号链接，如果链接的是一个目录，则当成目录处理。|<br>|-f|显示完整路径。|<br>|-x|只显示本文件系统。|<br>|-L level| 控制显示的目录深度。|<br>|-R|在下级目录中，再次执行 tree 命令并且加上 ‘-o 00Tree.html’选项，配合-L,-H使用。|<br>|-P pattern|只显示匹配了 pattern 的文件（不是目录），支持简单的正则表达式。|<br>|-I pattern|与-P相反，只显示没有匹配 pattern的文件。|<br>|–ignore-case|当使用了-P或-I选项时，忽略大小写。|<br>|–matchdirs|当使用了-P选项时，文件名包含完整路径。|<br>|–prune|不显示空目录，如果经过-P或-I后没有目录下没有需要显示的，也当作空目录。|<br>|–noreport|不显示最后的统计信息。|<br>|–charset charset|指定字符集。|<br>|–filelimit #|过滤掉文件个数超过 # 的目录。|<br>|–timefmt fmt|按照指定的格式打印文件的修改时间。|<br>|-o filename |将结果输出到文件。|<br>|-q| 用问号代替不可打印的字符。|<br>|-N|用八进制代替不可打印的字符。|<br>|-Q|用引号将文件名括起来。|<br>|-p|显示文件的类型和权限。|<br>|-u|显示文件所属的用户名或者UID。|<br>|-g|显示文件所属的组或者GID。|<br>|-s|显示文件的大小，单位：字节|。<br>|-h|显示文件的大小，使用更人性化的显示。|<br>|–si|显示文件的大小，类似 -h 但是使用国际公制单位(1k=1000)。|<br>|–du|对于目录，显示其下所有文件的累计大小。|<br>|-D|显示文件的最后修改时间。|<br>|-F|类似 ls -F，对不同的文件类，在末尾加上不同的字符。|<br>|–inodes|显示文件的索引节点。|<br>|–device|显示文件所属的设备号。|<br>|-v|显示的文件列表按照version排序。|<br>|-t|显示的文件列表按照最后修改时间排序。|<br>|-c|显示的文件列表按照最后的状态改变时间排序。|<br>|-U|不进行排序处理。|<br>|-r|反向输出列表。|<br>|–dirsfirst|优先显示目录（同一级别）|<br>|–sort[=name]|指定排序方式，name(default), ctime, mtime, size, version.|<br>|-i|输出中不要进行缩进。|<br>|-A|使用ASCII的横线字符表示缩进。|<br>|-S|使用CP437的横线字符表示缩进。|<br>|-n|关闭颜色显示。|<br>|-C|打开颜色显示。|<br>|-X|使能XML格式输出。|<br>|-J|使能JSON格式输出。|<br>|-H baseHREF|使能HTML格式输出，并包含基本http链接地址。|<br>|-T title|在HTML格式输出中，设置标题和H1标签头|<br>|–nolinks|在HTML格式输出中，不输出超链接。|</p>
+<p><img src="https://s2.51cto.com/images/blog/202201/04133345_61d3dc39695e056821.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_30,g_se,x_10,y_10,shadow_20,type_ZmFuZ3poZW5naGVpdGk="></p>
+<ol start="2">
+<li><p>包含隐藏文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree -a</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.51cto.com/images/blog/202201/04133345_61d3dc39890237557.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_30,g_se,x_10,y_10,shadow_20,type_ZmFuZ3poZW5naGVpdGk="></p>
+</li>
+<li><p>控制深度（假设为2）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree -L 2</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img src="https://s2.51cto.com/images/blog/202201/04133345_61d3dc39c5bd785555.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_30,g_se,x_10,y_10,shadow_20,type_ZmFuZ3poZW5naGVpdGk="></p>
+<p>更多的选项</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a</td>
+<td>显示所有文件，包含隐藏文件。</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>只显示目录。</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>跟踪符号链接，如果链接的是一个目录，则当成目录处理。</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>显示完整路径。</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>只显示本文件系统。</td>
+</tr>
+<tr>
+<td>-L level</td>
+<td>控制显示的目录深度。</td>
+</tr>
+<tr>
+<td>-R</td>
+<td>在下级目录中，再次执行 tree 命令并且加上 ‘-o 00Tree.html’选项，配合-L,-H使用。</td>
+</tr>
+<tr>
+<td>-P pattern</td>
+<td>只显示匹配了 pattern 的文件（不是目录），支持简单的正则表达式。</td>
+</tr>
+<tr>
+<td>-I pattern</td>
+<td>与-P相反，只显示没有匹配 pattern的文件。</td>
+</tr>
+<tr>
+<td>–ignore-case</td>
+<td>当使用了-P或-I选项时，忽略大小写。</td>
+</tr>
+<tr>
+<td>–matchdirs</td>
+<td>当使用了-P选项时，文件名包含完整路径。</td>
+</tr>
+<tr>
+<td>–prune</td>
+<td>不显示空目录，如果经过-P或-I后没有目录下没有需要显示的，也当作空目录。</td>
+</tr>
+<tr>
+<td>–noreport</td>
+<td>不显示最后的统计信息。</td>
+</tr>
+<tr>
+<td>–charset charset</td>
+<td>指定字符集。</td>
+</tr>
+<tr>
+<td>–filelimit #</td>
+<td>过滤掉文件个数超过 # 的目录。</td>
+</tr>
+<tr>
+<td>–timefmt fmt</td>
+<td>按照指定的格式打印文件的修改时间。</td>
+</tr>
+<tr>
+<td>-o filename</td>
+<td>将结果输出到文件。</td>
+</tr>
+<tr>
+<td>-q</td>
+<td>用问号代替不可打印的字符。</td>
+</tr>
+<tr>
+<td>-N</td>
+<td>用八进制代替不可打印的字符。</td>
+</tr>
+<tr>
+<td>-Q</td>
+<td>用引号将文件名括起来。</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>显示文件的类型和权限。</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>显示文件所属的用户名或者UID。</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>显示文件所属的组或者GID。</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>显示文件的大小，单位：字节</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>显示文件的大小，使用更人性化的显示。</td>
+</tr>
+<tr>
+<td>–si</td>
+<td>显示文件的大小，类似 -h 但是使用国际公制单位(1k=1000)。</td>
+</tr>
+<tr>
+<td>–du</td>
+<td>对于目录，显示其下所有文件的累计大小。</td>
+</tr>
+<tr>
+<td>-D</td>
+<td>显示文件的最后修改时间。</td>
+</tr>
+<tr>
+<td>-F</td>
+<td>类似 ls -F，对不同的文件类，在末尾加上不同的字符。</td>
+</tr>
+<tr>
+<td>–inodes</td>
+<td>显示文件的索引节点。</td>
+</tr>
+<tr>
+<td>–device</td>
+<td>显示文件所属的设备号。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示的文件列表按照version排序。</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>显示的文件列表按照最后修改时间排序。</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>显示的文件列表按照最后的状态改变时间排序。</td>
+</tr>
+<tr>
+<td>-U</td>
+<td>不进行排序处理。</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>反向输出列表。</td>
+</tr>
+<tr>
+<td>–dirsfirst</td>
+<td>优先显示目录（同一级别）</td>
+</tr>
+<tr>
+<td>–sort[=name]</td>
+<td>指定排序方式，name(default), ctime, mtime, size, version.</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>输出中不要进行缩进。</td>
+</tr>
+<tr>
+<td>-A</td>
+<td>使用ASCII的横线字符表示缩进。</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>使用CP437的横线字符表示缩进。</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>关闭颜色显示。</td>
+</tr>
+<tr>
+<td>-C</td>
+<td>打开颜色显示。</td>
+</tr>
+<tr>
+<td>-X</td>
+<td>使能XML格式输出。</td>
+</tr>
+<tr>
+<td>-J</td>
+<td>使能JSON格式输出。</td>
+</tr>
+<tr>
+<td>-H baseHREF</td>
+<td>使能HTML格式输出，并包含基本http链接地址。</td>
+</tr>
+<tr>
+<td>-T title</td>
+<td>在HTML格式输出中，设置标题和H1标签头</td>
+</tr>
+<tr>
+<td>–nolinks</td>
+<td>在HTML格式输出中，不输出超链接。</td>
+</tr>
+</tbody></table>
 
     </div>
 
@@ -225,7 +443,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E8%BD%AC/" rel="tag"># 转</a>
+              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"># 工具</a>
           </div>
 
         
@@ -237,7 +455,10 @@
     <a href="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/" rel="prev" title="">
       <i class="fa fa-chevron-left"></i> 
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/22/ReactNative%E6%96%B0%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/" rel="next" title="ReactNative新架构分享">
+      ReactNative新架构分享 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -309,7 +530,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -350,7 +571,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
