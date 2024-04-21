@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="背景介绍 Django是一个开放源代码的Web应用框架，由Python写成。采用了MTV的框架模式，即模型M，视图V和模版T。它最初是被开发来用于管理劳伦斯出版集团旗下的一些以新闻内容为主的网站的，即是CMS（内容管理系统）软件。并于2005年7月在BSD许可证下发布。这套框架是以比利时的吉普赛爵士吉他手Django Reinhardt来命名的。2019年12月2日，Django 3. 0发布 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="火三">
+<meta property="og:url" content="http://example.com/2023/08/28/Django%E5%BC%80%E5%8F%91%E5%88%86%E4%BA%AB/index.html">
+<meta property="og:site_name" content="火三">
+<meta property="og:description" content="背景介绍 Django是一个开放源代码的Web应用框架，由Python写成。采用了MTV的框架模式，即模型M，视图V和模版T。它最初是被开发来用于管理劳伦斯出版集团旗下的一些以新闻内容为主的网站的，即是CMS（内容管理系统）软件。并于2005年7月在BSD许可证下发布。这套框架是以比利时的吉普赛爵士吉他手Django Reinhardt来命名的。2019年12月2日，Django 3. 0发布 。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-28T09:54:01.777Z">
+<meta property="article:modified_time" content="2023-08-29T00:44:23.675Z">
+<meta property="article:author" content="火三">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2023/08/28/Django%E5%BC%80%E5%8F%91%E5%88%86%E4%BA%AB/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title> | 火三</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">火三</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/08/28/Django%E5%BC%80%E5%8F%91%E5%88%86%E4%BA%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="火三">
+      <meta itemprop="description" content="学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="火三">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-08-28 17:54:01" itemprop="dateCreated datePublished" datetime="2023-08-28T17:54:01+08:00">2023-08-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-08-29 08:44:23" itemprop="dateModified" datetime="2023-08-29T08:44:23+08:00">2023-08-29</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>背景介绍</p>
+<p>Django是一个开放源代码的Web应用框架，由Python写成。采用了MTV的框架模式，即模型M，视图V和模版T。它最初是被开发来用于管理劳伦斯出版集团旗下的一些以新闻内容为主的网站的，即是CMS（内容管理系统）软件。并于2005年7月在BSD许可证下发布。这套框架是以比利时的吉普赛爵士吉他手Django Reinhardt来命名的。2019年12月2日，Django 3. 0发布 。目前的django版本是4.2.3</p>
+<p>官网地址<br>MTV 模型Django 的 MTV 模式本质上和 MVC 是一样的，也是为了各组件间保持松耦合关系，只是定义上有些许不同，Django 的 MTV 分别是指：<br>● M 表示模型（Model）：编写程序应有的功能，负责业务对象与数据库的映射(ORM)。<br>● T 表示模板 (Template)：负责如何把页面(html)展示给用户。<br>● V 表示视图（View）：负责业务逻辑，并在适当时候调用 Model和 Template。除了以上三层之外，还需要一个 URL 分发器，它的作用是将一个个 URL 的页面请求分发给不同的 View 处理，View 再调用相应的 Model 和 Template，MTV 的响应模式如下所示：简易图：</p>
+<p>用户操作流程图：</p>
+<p>解析：用户通过浏览器向我们的服务器发起一个请求(request)，这个请求会去访问视图函数：</p>
+<p>● a.如果不涉及到数据调用，那么这个时候视图函数直接返回一个模板也就是一个网页给用户。<br>● b.如果涉及到数据调用，那么视图函数调用模型，模型去数据库查找数据，然后逐级返回。视图函数把返回的数据填充到模板中空格，最后返回网页给用户。<br>Django 的设计思想</p>
+<p>• DRY（Don’t repeat yourself）：不重复造轮子• MVT• 快速开发• 灵活易于扩展• 松耦合• 显式优于隐式</p>
+<p>django适合做什么</p>
+<p>● 内容管理系统• 博客• CMS• Wiki<br>● 企业内部系统• 会议室预定• 招聘管理• ERP &amp; CRM• 报表系统<br>● 运维管理系统• CMDB• 发布管理• 作业管理• 脚本管理• 变更管理• 故障管理<br>有哪些产品在使用django</p>
+<p>本课程的大纲</p>
+<p>Django 开发环境准备</p>
+<p>Python 开发环境准备 – PyCharm 介绍• PyCharm IDE，出自 JetBrains 公司，IDEA 系列产品为 JetBrains 产出的产品• 最好用的免费 Python IDE• PyCharm 有 Community 版本，有 Enterprise 版本• PyCharm 社区版不支持 Django 开发， 但可以安装 Django 类库，能够实现 Django 代码的自动提示<br>安装 PyCharm</p>
+<p>下载地址<br>新建一个django项目</p>
+<p>选择一个目录，并在命令行输入以下内容</p>
+<p>django startproject recruitment<br>cd recruitment<br>python3 manage.py startapp job<br>python3 manage.py runserver 0.0.0.0:8000</p>
+<h1 id="修改allow-host"><a href="#修改allow-host" class="headerlink" title="修改allow host"></a>修改allow host</h1><p>ALLOWED_HOSTS = [‘0.0.0.0’]</p>
+<h1 id="创建一个超级管理管，并按照提示输入用户名、密码"><a href="#创建一个超级管理管，并按照提示输入用户名、密码" class="headerlink" title="创建一个超级管理管，并按照提示输入用户名、密码"></a>创建一个超级管理管，并按照提示输入用户名、密码</h1><p>python3 createsuperuser</p>
+<p>django项目的目录结构</p>
+<p>登录django后台</p>
+<p>Django 的自定义模板</p>
+<p>• Django 模板包含了输出的 HTML 页面的静态部分的内容• 模板里面的动态内容在运行时被替换• 在 views 里面指定每个 URL 使用哪个模板来渲染页面• 模版继承与块（Template Inheritance &amp; Block） • 模板继承允许定义一个骨架模板，骨架包含站点上的公共元素（如头部导航，尾部链接）• 骨架模板里面可以定义 Block 块，每一个 Block 块都可以在继承的页面上重新定义/覆盖• 一个页面可以继承自另一个页面• 定义一个匿名访问页面的基础页面，基础页面中定义页头• 添加页面 job/templates/base.html</p>
+<p>添加 URL 路径映射</p>
+<p>• 让添加的页面，能够通过 URL 访问到• /joblist/ 的路径访问到 views 里面定义的 joblist 视图• 这个视图时一个 Method View，方法表示一个视图</p>
+<p>列表展示</p>
+<p>● 模板添加定义，View 页面添加完，URL 中也定义路由之后，再访问页面：<br>● <a target="_blank" rel="noopener" href="http://127.0.0.1:8000/joblist/">http://127.0.0.1:8000/joblist/</a></p>
+<p>配置日志记录</p>
+<p>● Django 里面使用 dictConfig 格式来配置日志<br>● Dictionary 对象，至少包含如下内容:<br>    ○ version, 目前唯一有效的值是 1<br>    ○ Handler, logger 是可选内容，通常需要自己定义<br>    ○ Filter, formatter 是可选内容，可以不用定义<br>● 定义日志输出格式， 分别定义 全局日志记错， 错误日志处理， 自定义的 日志处理器</p>
+<p>发送通知：钉钉群消息集成</p>
+<p>• 安装钉钉聊天机器人： pip install DingtalkChatbot• 测试群消息• python ./manage.py shell –settings=settings.local• from interview import dingtalk• dingtalk.send(“秋季招聘面试启动通知, 自 2020/09/01 开始秋季招聘”)• 定义 通知面试官的方法def notify_interviewer(modeladmin, request, queryset)• 注册到 modeladmin中actions = (export_model_as_csv, notify_interviewer, )</p>
+<p>django的中间件</p>
+<p>● 什么是中间件 Middleware ?<br>● 注入在 Django 请求/响应 处理流程中的钩子框架，能对 request/response 作处理<br>● 广泛的使用场景<br>    ○ 登录认证，安全拦截<br>    ○ 日志记录，性能上报<br>    ○ 缓存处理，监控告警….<br>● 自定义中间件的 2 种方法<br>● 使用函数实现<br>● 使用类实现<br>示例创建一个请求日志，性能日志记录中间件</p>
+<p>输出到 Response Header 里面的 X-Page-Ducration-ms</p>
+<p>Sentry 集成</p>
+<p>解决的问题： 应用的错误，异常监控统计，报警通知；性能监控统计，对问题进行跟踪Sentry 架构之美• 开放的架构：可与 AD 域账号集成，与 Google/Stackoverflow 等账号集成• 有完善的插件支持：Webhook/Gitlab/Jira/Slack/PushOver/….• 支持不同环境（开发、测试、预发、线上）；可以配置灵活的告警• 跨平台，跨端的支持：Python/Java/JavaScript/Ruby/Go/…, Android/iOS/Web/…• API 简单、易用，自动集成；安装简单：架构依赖多，但使用 Docker 可以一个命令安装• 自动对错误，异常进行统计聚合，按照上下文的Tag进行聚合• 可以对性能进行统计分析，可抽样;可视化的趋势分析• 多租户，支持双因素认证，敏感内容自动脱敏</p>
+<ul>
+<li>两种方法安装 Sentry ： <ul>
+<li>使用 Docker 官方服务（量大需要付费，使用方便）；</li>
+<li>自己搭建 服务（从源码安装，或者使用docker 搭建服务）；</li>
+</ul>
+</li>
+<li>使用 Docker 来安装 sentry, 使用 release 版本<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/getsentry/onpremise/releases">https://github.com/getsentry/onpremise/releases</a></li>
+<li>./install.sh</li>
+<li>docker-compose up -d </li>
+</ul>
+</li>
+<li>Django 配置集成 sentry ， 自动上报未捕获异常， 错误日志</li>
+</ul>
+<p>集成效果</p>
+<p>告警趋势可视化: Prometheus &amp; Grafana</p>
+<p>Prometheus 数据类型• Counter：计数器，总是增长的整数值；请求数，订单量，错误数等；• Gauge：可以上下波动的计量值，比如温度，内存使用量，处理中的请求；• Summary：提供观测样本的摘要，包含样本数量，样本值的和；滑动窗口计算:请求耗时，响应数据大小• Histogram：把观测值放到配置好的桶中做统计，请求耗时，响应数据大小等；</p>
+<p>Django 中使用缓存</p>
+<p>● Django 缓存的存储方式</p>
+<ul>
+<li>Memcached 缓存</li>
+<li>Redis 缓存 （需要安装 django-redis 包）</li>
+<li>数据库缓存</li>
+<li>文件系统缓存</li>
+<li>本地内存缓存    </li>
+<li>伪缓存( Dummy Cache， 用于开发、测试) • 自定义缓存</li>
+</ul>
+<p>Celery 集成：Celery 的使用</p>
+<p>● 什么是 Celery?<br>● 一个分布式的任务队列<br>    ○ 简单： 几行代码可以创建一个简单的 Celery 任务<br>    ○ 高可用：工作机会自动重试<br>    ○ 快速：可以执行一分钟上百万的任务<br>    ○ 灵活：每一块都可以扩展</p>
+<p>Celery 中的核心概念</p>
+<p>• Task: 一个需要执行的任务，任务通常异步执行• Period Task: 需要定时执行的任务，定时一定间隔执行，也可以使用 crontab 表达式设定执行周期和时间点• Message Broker: 消息代理，临时存储，传输任务到工作节点的消息队列。可以用 Redis,RabbitMQ, Amazon SQS 作为消息代理。消息代理可以有多个，以保障系统的高可用。• Worker：工作节点，执行任务的进程，worker可以有多个，保障系统的高可用和扩展性。</p>
+<p>Celery 使用场景</p>
+<p>大量需要使用异步任务的场景• 发送电子邮件，发送 IM 消息通知• 爬取网页， 数据分析• 图像、视频处理• 生成报告，深度学习</p>
+<p>Flower: 一个实时的 Celery 任务监控系统</p>
+<p>Django之美：Signals信号及其使用场景</p>
+<p>什么是 Signals?• Django 的信号• Django 框架内置的信号发送器，这个信号发送器在框架里面• 有动作发生的时候，帮助解耦的应用接收到消息通知• 当动作发生时，允许特定的信号发送者发送消息到一系列的消息接收者• Signals 是同步调用</p>
+<p>信号的应用场景• 系统解耦；代码复用：实现统一处理逻辑的框架中间件； -&gt; 可维护性提升• 记录操作日志，增加/清除缓存，数据变化接入审批流程；评论通知；• 关联业务变化通知，• 例：通讯录变化的异步事件处理，比如员工入职时发送消息通知团队新人入职，员工离职时异步清理员工的权限等等；</p>
+<p>生产环境中的安全：应用安全</p>
+<p>访问限流 – 防恶意攻击• Rest Framework API 限流• 应用限流: 对页面的访问频次进行限流</p>
+<p>可以对匿名用户，具名用户进行限流可以设置峰值流量（如每分钟60次请求）也可以设置连续一段时间的流量限制（比如每天3000次）</p>
+<p>云环境中的部署：容器的基础用法 – Docker 容器介绍</p>
+<p>● Docker:<br>    ○ 码头工人，轻量级的，可移植，自包含的容器，来自动化、版本化应用的发布。<br>    ○ Docker上跑的容器是一个个的集装箱；<br>● Docker的基础是LXC<br>    ○ LXC用于应用程序的隔离，每个应用程序分配独立的命名空间，隔离的CPU, 内存，磁盘，网络资源<br>    ○ 每个应用内部可以单跑一套容器系统，功<br>    能上相当于传统的虚拟机，但本质上是内核层面对资源的隔离<br>● Docker 容器的分层和版本管理<br>    ○ Docker把应用和系统打包到一起（image镜像），进行版本化管理。<br>    ○ 应用之于Docker，如同代码之于Git/SVN，一个命令可以把应用部署到docker上。<br>容器的基础用法</p>
+<p>持续集成：CICD的工作流程</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/08/28/Fastlane%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86%E8%AF%81%E4%B9%A6/" rel="prev" title="Fastlane多设备管理证书">
+      <i class="fa fa-chevron-left"></i> Fastlane多设备管理证书
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9allow-host"><span class="nav-number">1.</span> <span class="nav-text">修改allow host</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%B6%85%E7%BA%A7%E7%AE%A1%E7%90%86%E7%AE%A1%EF%BC%8C%E5%B9%B6%E6%8C%89%E7%85%A7%E6%8F%90%E7%A4%BA%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D%E3%80%81%E5%AF%86%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">创建一个超级管理管，并按照提示输入用户名、密码</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">火三</p>
+  <div class="site-description" itemprop="description">学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">火三</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
