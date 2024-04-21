@@ -1,202 +1,35 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.2">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>SDWebImage学习笔记（二） - 火三</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="火三"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="火三"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="缓存这一小节主要研究下SDWebImage的cache功能是如何实现的，首先找到在SDWebImage中充当缓存功能的类，这一步很简单，直接定位到SDImageCache类。也就是说，接下来主要就研究这个类了。"><meta property="og:type" content="blog"><meta property="og:title" content="SDWebImage学习笔记（二）"><meta property="og:url" content="http://example.com/2017/01/06/SDWebImage%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"><meta property="og:site_name" content="火三"><meta property="og:description" content="缓存这一小节主要研究下SDWebImage的cache功能是如何实现的，首先找到在SDWebImage中充当缓存功能的类，这一步很简单，直接定位到SDImageCache类。也就是说，接下来主要就研究这个类了。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/img/og_image.png"><meta property="article:published_time" content="2017-01-06T06:46:12.000Z"><meta property="article:modified_time" content="2022-07-26T02:55:08.677Z"><meta property="article:author" content="火三"><meta property="article:tag" content="三方库研究"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2017/01/06/SDWebImage%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"},"headline":"SDWebImage学习笔记（二）","image":["http://example.com/img/og_image.png"],"datePublished":"2017-01-06T06:46:12.000Z","dateModified":"2022-07-26T02:55:08.677Z","author":{"@type":"Person","name":"火三"},"publisher":{"@type":"Organization","name":"火三","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"缓存这一小节主要研究下SDWebImage的cache功能是如何实现的，首先找到在SDWebImage中充当缓存功能的类，这一步很简单，直接定位到SDImageCache类。也就是说，接下来主要就研究这个类了。"}</script><link rel="canonical" href="http://example.com/2017/01/06/SDWebImage%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
 
-<link rel="stylesheet" href="/css/main.css">
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
 
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
-
-  <meta name="description" content="缓存这一小节主要研究下SDWebImage的cache功能是如何实现的，首先找到在SDWebImage中充当缓存功能的类，这一步很简单，直接定位到SDImageCache类。也就是说，接下来主要就研究这个类了。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="SDWebImage学习笔记（二）">
-<meta property="og:url" content="http://example.com/2017/01/06/SDWebImage%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
-<meta property="og:site_name" content="火三">
-<meta property="og:description" content="缓存这一小节主要研究下SDWebImage的cache功能是如何实现的，首先找到在SDWebImage中充当缓存功能的类，这一步很简单，直接定位到SDImageCache类。也就是说，接下来主要就研究这个类了。">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2017-01-06T06:46:12.000Z">
-<meta property="article:modified_time" content="2022-07-26T02:55:08.677Z">
-<meta property="article:author" content="火三">
-<meta property="article:tag" content="三方库研究">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://example.com/2017/01/06/SDWebImage%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
-
-  <title>SDWebImage学习笔记（二） | 火三</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">火三</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2017/01/06/SDWebImage%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="火三">
-      <meta itemprop="description" content="学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="火三">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          SDWebImage学习笔记（二）
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-01-06 14:46:12" itemprop="dateCreated datePublished" datetime="2017-01-06T14:46:12+08:00">2017-01-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-26 10:55:08" itemprop="dateModified" datetime="2022-07-26T10:55:08+08:00">2022-07-26</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><p>这一小节主要研究下SDWebImage的cache功能是如何实现的，首先找到在SDWebImage中充当缓存功能的类，这一步很简单，直接定位到SDImageCache类。也就是说，接下来主要就研究这个类了。</p>
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body class="is-1-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="火三" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-12"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2017-01-06T06:46:12.000Z" title="1/6/2017, 2:46:12 PM">2017-01-06</time>发表</span><span class="level-item"><time dateTime="2022-07-26T02:55:08.677Z" title="7/26/2022, 10:55:08 AM">2022-07-26</time>更新</span><span class="level-item">21 分钟读完 (大约3174个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">SDWebImage学习笔记（二）</h1><div class="content"><h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><p>这一小节主要研究下SDWebImage的cache功能是如何实现的，首先找到在SDWebImage中充当缓存功能的类，这一步很简单，直接定位到SDImageCache类。也就是说，接下来主要就研究这个类了。</p>
 <span id="more"></span>
 <h2 id="SDImageCacheConfig-缓存配置"><a href="#SDImageCacheConfig-缓存配置" class="headerlink" title="SDImageCacheConfig 缓存配置"></a>SDImageCacheConfig 缓存配置</h2><p>SDWebImage提供了一个专门的类SDImageCacheConfig，来进行Cache的一些配置工作，主要配置的信息包括以下几点</p>
 <ol>
@@ -234,203 +67,48 @@
 <h4 id="缓存的信息"><a href="#缓存的信息" class="headerlink" title="缓存的信息"></a>缓存的信息</h4>除了支持存、查、取、删，之外，SDWebImageCache还提供了方便查看缓存的文件数、缓存的总大小、以及实时计算文件大小的block异步回调，代码如下  <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">    - (<span class="built_in">NSUInteger</span>)getSize &#123;</span><br><span class="line">    __block <span class="built_in">NSUInteger</span> size = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">dispatch_sync</span>(<span class="keyword">self</span>.ioQueue, ^&#123;</span><br><span class="line">        <span class="built_in">NSDirectoryEnumerator</span> *fileEnumerator = [_fileManager enumeratorAtPath:<span class="keyword">self</span>.diskCachePath];</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">NSString</span> *fileName <span class="keyword">in</span> fileEnumerator) &#123;</span><br><span class="line">            <span class="built_in">NSString</span> *filePath = [<span class="keyword">self</span>.diskCachePath stringByAppendingPathComponent:fileName];</span><br><span class="line">            <span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *, <span class="type">id</span>&gt; *attrs = [[<span class="built_in">NSFileManager</span> defaultManager] attributesOfItemAtPath:filePath error:<span class="literal">nil</span>];</span><br><span class="line">            size += [attrs fileSize];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> size;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSUInteger</span>)getDiskCount &#123;</span><br><span class="line">    __block <span class="built_in">NSUInteger</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">dispatch_sync</span>(<span class="keyword">self</span>.ioQueue, ^&#123;</span><br><span class="line">        <span class="built_in">NSDirectoryEnumerator</span> *fileEnumerator = [_fileManager enumeratorAtPath:<span class="keyword">self</span>.diskCachePath];</span><br><span class="line">        count = fileEnumerator.allObjects.count;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>)calculateSizeWithCompletionBlock:(<span class="keyword">nullable</span> SDWebImageCalculateSizeBlock)completionBlock &#123;</span><br><span class="line">    <span class="built_in">NSURL</span> *diskCacheURL = [<span class="built_in">NSURL</span> fileURLWithPath:<span class="keyword">self</span>.diskCachePath isDirectory:<span class="literal">YES</span>];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">dispatch_async</span>(<span class="keyword">self</span>.ioQueue, ^&#123;</span><br><span class="line">        <span class="built_in">NSUInteger</span> fileCount = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">NSUInteger</span> totalSize = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">NSDirectoryEnumerator</span> *fileEnumerator = [_fileManager enumeratorAtURL:diskCacheURL</span><br><span class="line">                                                   includingPropertiesForKeys:@[<span class="built_in">NSFileSize</span>]</span><br><span class="line">                                                                      options:<span class="built_in">NSDirectoryEnumerationSkipsHiddenFiles</span></span><br><span class="line">                                                                 errorHandler:<span class="literal">NULL</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">NSURL</span> *fileURL <span class="keyword">in</span> fileEnumerator) &#123;</span><br><span class="line">            <span class="built_in">NSNumber</span> *fileSize;</span><br><span class="line">            [fileURL getResourceValue:&amp;fileSize forKey:<span class="built_in">NSURLFileSizeKey</span> error:<span class="literal">NULL</span>];</span><br><span class="line">            totalSize += fileSize.unsignedIntegerValue;</span><br><span class="line">            fileCount += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (completionBlock) &#123;</span><br><span class="line">            <span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                completionBlock(fileCount, totalSize);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1>通过这一小节对源码的分析，我们大概知道了SDWebImage的缓存工作原理。也对文件操作有了一个更深刻的理解，下一小节将研究下SDWebImageManager是如果对下载和缓存进行综合管理的。</li>
 </ul>
-
-    </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E4%B8%89%E6%96%B9%E5%BA%93%E7%A0%94%E7%A9%B6/" rel="tag"># 三方库研究</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2016/12/30/SDWebImage%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="SDWebImage学习笔记（一）">
-      <i class="fa fa-chevron-left"></i> SDWebImage学习笔记（一）
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2017/01/16/SDWebImage%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/" rel="next" title="SDWebImage学习笔记（三）">
-      SDWebImage学习笔记（三） <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%93%E5%AD%98"><span class="nav-number">1.</span> <span class="nav-text">缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SDImageCacheConfig-%E7%BC%93%E5%AD%98%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">SDImageCacheConfig 缓存配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDImageCache-%E7%BC%93%E5%AD%98%E7%B1%BB"><span class="nav-number">1.2.</span> <span class="nav-text">SDImageCache 缓存类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SDImageCache%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.1.</span> <span class="nav-text">SDImageCache文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E7%9A%84%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E8%B7%AF%E5%BE%84"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">默认的文件存储路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E8%87%AA%E5%B7%B1%E5%AE%9A%E4%B9%89%E7%9A%84%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">用户自己定义的文件路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%85%E5%8A%A9%E7%9A%84%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">辅助的文件路径方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E5%AD%98%E5%82%A8%E8%B7%AF%E5%BE%84"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">图片存储路径</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SDImageCache%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.2.2.</span> <span class="nav-text">SDImageCache的初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SDImageCache%E7%9A%84%E7%BC%93%E5%AD%98%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.3.</span> <span class="nav-text">SDImageCache的缓存操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%96-amp-%E6%9F%A5"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">取&amp;查</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">删</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">缓存的信息</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">小结</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">火三</p>
-  <div class="site-description" itemprop="description">学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">41</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">10</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
-  </div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">火三</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-</body>
-</html>
+</div><div class="article-licensing box"><div class="licensing-title"><p>SDWebImage学习笔记（二）</p><p><a href="http://example.com/2017/01/06/SDWebImage学习笔记（二）/">http://example.com/2017/01/06/SDWebImage学习笔记（二）/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>火三</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2017-01-06</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2022-07-26</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/%E4%B8%89%E6%96%B9%E5%BA%93%E7%A0%94%E7%A9%B6/">三方库研究</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://triplefireman.github.io/" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/" alt="支付宝"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2017/01/16/SDWebImage%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">SDWebImage学习笔记（三）</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2016/12/30/SDWebImage%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="level-item">SDWebImage学习笔记（一）</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><!--!--><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="火三" height="28"></a><p class="is-size-7"><span>&copy; 2024 火三</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

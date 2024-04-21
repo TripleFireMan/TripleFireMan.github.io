@@ -1,209 +1,35 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.2">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>使用钉钉机器人将禅道任务，自动发送到钉钉群组 - 火三</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="火三"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="火三"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="简单介绍下钉钉机器人的使用"><meta property="og:type" content="blog"><meta property="og:title" content="使用钉钉机器人将禅道任务，自动发送到钉钉群组"><meta property="og:url" content="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/"><meta property="og:site_name" content="火三"><meta property="og:description" content="简单介绍下钉钉机器人的使用"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13.png"><meta property="og:image" content="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13-08.19.22.png"><meta property="og:image" content="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13-08.21.32.png"><meta property="og:image" content="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13-08.22.07.png"><meta property="og:image" content="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13-08.29.41.png"><meta property="article:published_time" content="2020-12-15T02:00:24.000Z"><meta property="article:modified_time" content="2024-04-21T12:01:19.301Z"><meta property="article:author" content="火三"><meta property="article:tag" content="python"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/"},"headline":"使用钉钉机器人将禅道任务，自动发送到钉钉群组","image":["http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13.png","http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13-08.19.22.png","http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13-08.21.32.png","http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13-08.22.07.png","http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13-08.29.41.png"],"datePublished":"2020-12-15T02:00:24.000Z","dateModified":"2024-04-21T12:01:19.301Z","author":{"@type":"Person","name":"火三"},"publisher":{"@type":"Organization","name":"火三","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"简单介绍下钉钉机器人的使用"}</script><link rel="canonical" href="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
 
-<link rel="stylesheet" href="/css/main.css">
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
 
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
-
-  <meta name="description" content="简单介绍下钉钉机器人的使用">
-<meta property="og:type" content="article">
-<meta property="og:title" content="使用钉钉机器人将禅道任务，自动发送到钉钉群组">
-<meta property="og:url" content="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/index.html">
-<meta property="og:site_name" content="火三">
-<meta property="og:description" content="简单介绍下钉钉机器人的使用">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13.png">
-<meta property="og:image" content="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13%2008.19.22.png">
-<meta property="og:image" content="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13%2008.21.32.png">
-<meta property="og:image" content="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13%2008.22.07.png">
-<meta property="og:image" content="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13%2008.29.41.png">
-<meta property="article:published_time" content="2020-12-15T02:00:24.000Z">
-<meta property="article:modified_time" content="2022-07-27T04:04:57.321Z">
-<meta property="article:author" content="火三">
-<meta property="article:tag" content="python">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13.png">
-
-<link rel="canonical" href="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
-
-  <title>使用钉钉机器人将禅道任务，自动发送到钉钉群组 | 火三</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">火三</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="火三">
-      <meta itemprop="description" content="学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="火三">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          使用钉钉机器人将禅道任务，自动发送到钉钉群组
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-12-15 10:00:24" itemprop="dateCreated datePublished" datetime="2020-12-15T10:00:24+08:00">2020-12-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-27 12:04:57" itemprop="dateModified" datetime="2022-07-27T12:04:57+08:00">2022-07-27</time>
-              </span>
-
-          
-            <div class="post-description">简单介绍下钉钉机器人的使用</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <p><font color="#ff5400"><b>一、为什么要开发这样一个功能？</b></font></p>
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body class="is-1-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="火三" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-12"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-12-15T02:00:24.000Z" title="12/15/2020, 10:00:24 AM">2020-12-15</time>发表</span><span class="level-item"><time dateTime="2024-04-21T12:01:19.301Z" title="4/21/2024, 8:01:19 PM">2024-04-21</time>更新</span><span class="level-item">10 分钟读完 (大约1574个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">使用钉钉机器人将禅道任务，自动发送到钉钉群组</h1><div class="content"><p><font color="#ff5400"><b>一、为什么要开发这样一个功能？</b></font></p>
 <blockquote>
 <p>禅道，是公司用来对项目进行管理的软件，主要是用来对项目任务、产品bug进行追踪和管理.<br>钉钉，是公司所有员工用来工作沟通的软件</p>
 <p>将禅道上面，每个员工工作任务的情况，进行汇总并同步到钉钉群，有助于项目人员及管理人员对项目执行情况快速及时的掌握</p>
@@ -211,7 +37,7 @@
 <span id="more"></span>
 
 <p><strong>下图是最终实现的效果图，钉钉机器人将项目组成员，一周任务完成情况，进行汇总。未完成的任务点击链接可传送到禅道对应的任务页面，进行快速处理</strong><br><img src="/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13.png" width="300"></p>
-<!-- ![](%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13.png) -->
+<!-- ![](使用钉钉机器人将禅道任务，自动发送到钉钉群组/iShot2020-12-13.png) -->
 
 <p><font color="#ff5400"><b>二、实现原理</b></font></p>
 <ul>
@@ -221,17 +47,17 @@
 <li>crontab定时器</li>
 </ul>
 <p><font color="#ff5400" size="4"><b>钉钉的webhook机制</b></font><br>钉钉的webhook，是可以通过向一个url地址，发送消息，然后钉钉解析之后，会根据消息类型展示不同的样式卡片，而这个url，就是通常我们说的webhook，翻译成中文就是“网络钩子的意思”</p>
-<p>添加一个钉钉群组机器人，大概需要以下四步<br>第一步： 群组中进入群设置<br><img src="/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13%2008.19.22.png" width="300"></p>
-<!-- ![](%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13%2008.19.22.png) -->
-<p>第二步：点击智能助手，进入机器人设置页<br><img src="/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13%2008.21.32.png" width="300"></p>
-<!-- ![](%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13%2008.21.32.png) -->
+<p>添加一个钉钉群组机器人，大概需要以下四步<br>第一步： 群组中进入群设置<br><img src="/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13-08.19.22.png" width="300"></p>
+<!-- ![](使用钉钉机器人将禅道任务，自动发送到钉钉群组/iShot2020-12-13-08.19.22.png) -->
+<p>第二步：点击智能助手，进入机器人设置页<br><img src="/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13-08.21.32.png" width="300"></p>
+<!-- ![](使用钉钉机器人将禅道任务，自动发送到钉钉群组/iShot2020-12-13-08.21.32.png) -->
 <p>第三步：勾选自定义机器人，并进入机器人设置页</p>
-<img src="/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13%2008.22.07.png" width="300">
-<!-- <img src=%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13%2008.29.41.png width=300> -->
-<!-- ![](%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13%2008.22.07.png) -->
+<img src="/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13-08.22.07.png" width="300">
+<!-- <img src=使用钉钉机器人将禅道任务，自动发送到钉钉群组/iShot2020-12-13-08.29.41.png width=300> -->
+<!-- ![](使用钉钉机器人将禅道任务，自动发送到钉钉群组/iShot2020-12-13-08.22.07.png) -->
 第四步:机器人添加设置页
-<img src="/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13%2008.29.41.png" width="300">
-<!-- ![](%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13%2008.29.41.png) -->
+<img src="/2020/12/15/%E4%BD%BF%E7%94%A8%E9%92%89%E9%92%89%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%B0%86%E7%A6%85%E9%81%93%E4%BB%BB%E5%8A%A1%EF%BC%8C%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E5%88%B0%E9%92%89%E9%92%89%E7%BE%A4%E7%BB%84/iShot2020-12-13-08.29.41.png" width="300">
+<!-- ![](使用钉钉机器人将禅道任务，自动发送到钉钉群组/iShot2020-12-13%2008.29.41.png) -->
 
 <p><font color="#ff5400" size="4"><b>禅道的二级开发api</b></font><br>想要实现我们的效果，需要拿到每个员工的任务列表，而拿到任务列表，需要获取每个员工的编号，禅道里面是用户名。通过用户名获取该用户的所有任务列表。</p>
 <p>首先遇到的问题是，<br><font color="red">登录问题</font><br>禅道是需要进行登录的，登录是要建立会话的，这里使用的session进行会话管理,但是并不是每一个登录用户都可以随意获取别人的任务状态，这里涉及到另外一个问题<br><font color="red">权限问题</font><br>权限找田新亮，将账户提升为“admin开发者”。</p>
@@ -255,202 +81,48 @@
 </li>
 </ol>
 <p><font color="#ff5400" size="5"><b>四、小结</b></font><br>做这个功能的出发点是利用自己所掌握的知识做一些效能提高方面的事情，总的来说还是希望在人工智能时代，将一些非人工的事情，让机器去做，节省人力成本，后续如果有希望帮助的小伙伴，可以随时钉钉联系我，一起为公司的发展、壮大添砖加瓦。</p>
-
-    </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/python/" rel="tag"># python</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2019/10/30/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/" rel="prev" title="Python学习笔记（三）">
-      <i class="fa fa-chevron-left"></i> Python学习笔记（三）
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/07/26/ReactNative%E5%AD%A6%E4%B9%A0%E4%B8%80-RN%E7%9A%84%E6%8A%80%E6%9C%AF%E6%A0%88/" rel="next" title="ReactNative学习一-RN的技术栈">
-      ReactNative学习一-RN的技术栈 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">火三</p>
-  <div class="site-description" itemprop="description">学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">41</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">10</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
-  </div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2024</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">火三</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-</body>
-</html>
+</div><div class="article-licensing box"><div class="licensing-title"><p>使用钉钉机器人将禅道任务，自动发送到钉钉群组</p><p><a href="http://example.com/2020/12/15/使用钉钉机器人将禅道任务，自动发送到钉钉群组/">http://example.com/2020/12/15/使用钉钉机器人将禅道任务，自动发送到钉钉群组/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>火三</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2020-12-15</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-04-21</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/python/">python</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://triplefireman.github.io/" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>爱发电</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/" alt="支付宝"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>送我杯咖啡</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/07/26/ReactNative%E5%AD%A6%E4%B9%A0%E4%B8%80-RN%E7%9A%84%E6%8A%80%E6%9C%AF%E6%A0%88/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">ReactNative学习一-RN的技术栈</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2019/10/30/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"><span class="level-item">Python学习笔记（三）</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><!--!--><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="火三" height="28"></a><p class="is-size-7"><span>&copy; 2024 火三</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
