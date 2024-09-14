@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:published_time" content="2024-09-13T08:51:17.000Z">
-<meta property="article:modified_time" content="2024-09-13T09:01:52.578Z">
+<meta property="article:modified_time" content="2024-09-14T02:14:54.913Z">
 <meta property="article:author" content="火三">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://triplefireman.github.io/2024/09/13/%E4%BD%BF%E7%94%A8MacMini%E4%BD%9C%E4%B8%BA%E6%89%93%E5%8C%85%E6%9C%BA-Jenkins%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%93%E5%8C%85/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
@@ -55,7 +55,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-09-13 17:01:52'
+  postUpdate: '2024-09-14 10:14:54'
 }</script><script>(win=>{
       win.saveToLocal = {
         set: (key, value, ttl) => {
@@ -152,31 +152,25 @@
         }
       }
       detectApple()
-    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="火三"></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">使用MacMini作为打包机+Jenkins进行自动化打包</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-09-13T08:51:17.000Z" title="发表于 2024-09-13 16:51:17">2024-09-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-13T09:01:52.578Z" title="更新于 2024-09-13 17:01:52">2024-09-13</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="使用MacMini作为打包机+Jenkins进行自动化打包"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="使用MacMini作为打包机-Jenkins进行自动化打包"><a href="#使用MacMini作为打包机-Jenkins进行自动化打包" class="headerlink" title="使用MacMini作为打包机+Jenkins进行自动化打包"></a>使用MacMini作为打包机+Jenkins进行自动化打包</h1><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><blockquote>
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="火三"></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">使用MacMini作为打包机+Jenkins进行自动化打包</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-09-13T08:51:17.000Z" title="发表于 2024-09-13 16:51:17">2024-09-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-14T02:14:54.913Z" title="更新于 2024-09-14 10:14:54">2024-09-14</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="使用MacMini作为打包机+Jenkins进行自动化打包"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="使用MacMini作为打包机-Jenkins进行自动化打包"><a href="#使用MacMini作为打包机-Jenkins进行自动化打包" class="headerlink" title="使用MacMini作为打包机+Jenkins进行自动化打包"></a>使用MacMini作为打包机+Jenkins进行自动化打包</h1><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><blockquote>
 <p>团队目前4个人，iOS（2）安卓（2），App打包需要占用研发的电脑，以iOS为例，打包一次司机端的ipa包，大概需要4-5分钟，打包一次货主端的ipa包，大概需要3分钟，基于这种情况，将之前申请的macMini，安装上jenkins的服务，配置上打包任务。这样每次打包就不用占用开发电脑，提高效率</p>
 </blockquote>
-<h3 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h3><h5 id="Jenkins配置主页面"><a href="#Jenkins配置主页面" class="headerlink" title="Jenkins配置主页面"></a>Jenkins配置主页面</h5><p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/1wvqr7erzkmeOako/img/e20bf444-d294-4f46-874f-b96ff3d39410.png" alt="image.png"></p>
-<h5 id="钉钉发送效果图"><a href="#钉钉发送效果图" class="headerlink" title="钉钉发送效果图"></a>钉钉发送效果图</h5><p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/1wvqr7erzkmeOako/img/e041ae92-54e5-4e75-8749-04ae5c680c78.png" alt="image.png"></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/a/dejDyJAzgT9NMm4m/ae7fdaf54dcd4daea58d89a501051e2d3409.png" alt="image"></p>
+<h3 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h3><h5 id="Jenkins配置主页面"><a href="#Jenkins配置主页面" class="headerlink" title="Jenkins配置主页面"></a>Jenkins配置主页面</h5><p><img src="/2024/09/13/%E4%BD%BF%E7%94%A8MacMini%E4%BD%9C%E4%B8%BA%E6%89%93%E5%8C%85%E6%9C%BA-Jenkins%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%93%E5%8C%85/e20bf444-d294-4f46-874f-b96ff3d39410.png"></p>
+<h5 id="钉钉发送效果图"><a href="#钉钉发送效果图" class="headerlink" title="钉钉发送效果图"></a>钉钉发送效果图</h5><p><img src="/2024/09/13/%E4%BD%BF%E7%94%A8MacMini%E4%BD%9C%E4%B8%BA%E6%89%93%E5%8C%85%E6%9C%BA-Jenkins%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%93%E5%8C%85/e041ae92-54e5-4e75-8749-04ae5c680c78.png" alt="image.png"></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p><img src="/2024/09/13/%E4%BD%BF%E7%94%A8MacMini%E4%BD%9C%E4%B8%BA%E6%89%93%E5%8C%85%E6%9C%BA-Jenkins%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%93%E5%8C%85/ae7fdaf54dcd4daea58d89a501051e2d3409.png" alt="image"></p>
 <h3 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h3><ol>
 <li>jdk无法下载<ol>
-<li> jdk是属于oracle公司的产品，看了之前的文档让下载jdk11，但是jdk11没有找到，只找到了Java11，而且还是需要登录才能下载，于是去注册了oracle的账号，结果注册之后，仍然不能下载报404，最后解决办法是下载了图二所示的JDK22，安装后正常使用<br><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/1wvqr7erzkmeOako/img/37c732ae-4931-4144-bf46-e7e9ce7a5094.png" alt="image.png"><br><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/1wvqr7erzkmeOako/img/3f691c8a-3e1e-4d88-8dc0-bd2b00c37011.png" alt="image.png"></li>
+<li> jdk是属于oracle公司的产品，看了之前的文档让下载jdk11，但是jdk11没有找到，只找到了Java11，而且还是需要登录才能下载，于是去注册了oracle的账号，结果注册之后，仍然不能下载报404，最后解决办法是下载了图二所示的JDK22，安装后正常使用<br><img src="/2024/09/13/%E4%BD%BF%E7%94%A8MacMini%E4%BD%9C%E4%B8%BA%E6%89%93%E5%8C%85%E6%9C%BA-Jenkins%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%93%E5%8C%85/37c732ae-4931-4144-bf46-e7e9ce7a5094.png" alt="image.png"><br><img src="/2024/09/13/%E4%BD%BF%E7%94%A8MacMini%E4%BD%9C%E4%B8%BA%E6%89%93%E5%8C%85%E6%9C%BA-Jenkins%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%93%E5%8C%85/3f691c8a-3e1e-4d88-8dc0-bd2b00c37011.png" alt="alt text"></li>
 </ol>
 </li>
 <li>局域网无法访问指定ip对用的jenkins<ol>
 <li>这个是由于jenkins开放ip默认是127.0.0.1.需要将开放ip更改为0.0.0.0，参考资料二解决此问题</li>
 </ol>
 </li>
-<li>钉钉插件发送消息报错的问题</li>
+<li>钉钉插件发送消息报错的问题<img src="/2024/09/13/%E4%BD%BF%E7%94%A8MacMini%E4%BD%9C%E4%B8%BA%E6%89%93%E5%8C%85%E6%9C%BA-Jenkins%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%93%E5%8C%85/c7f272ca-7f3e-4567-a4db-be55934d7811.png" alt="alt text"></li>
 </ol>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/1wvqr7erzkmeOako/img/c7f272ca-7f3e-4567-a4db-be55934d7811.png" alt="image.png"></p>
 <p>该问题是由于钉钉插件，保存有问题，已经保存的消息未生效，一直发送的是空消息导致，解决办法，钉钉消息先点击应用，再点击保存</p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/1wvqr7erzkmeOako/img/9262807c-4386-49d3-a0f2-1b38ef43e7d6.png" alt="image.png"></p>
-<ol start="4">
-<li>Xcode调参</li>
-</ol>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/1wvqr7erzkmeOako/img/9f7c98ef-6147-45db-870e-be4930075608.png" alt="image.png"></p>
-<p>我们的项目是使用workspace管理的工程，这里需要配置上工程名称</p>
+<p><img src="/2024/09/13/%E4%BD%BF%E7%94%A8MacMini%E4%BD%9C%E4%B8%BA%E6%89%93%E5%8C%85%E6%9C%BA-Jenkins%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%93%E5%8C%85/9262807c-4386-49d3-a0f2-1b38ef43e7d6.png" alt="alt text"><br>4.  Xcode调参<br><img src="/2024/09/13/%E4%BD%BF%E7%94%A8MacMini%E4%BD%9C%E4%B8%BA%E6%89%93%E5%8C%85%E6%9C%BA-Jenkins%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%93%E5%8C%85/9f7c98ef-6147-45db-870e-be4930075608.png" alt="alt text"><br>我们的项目是使用workspace管理的工程，这里需要配置上工程名称</p>
 <hr>
 <h4 id="引用资料"><a href="#引用资料" class="headerlink" title="引用资料"></a>引用资料</h4><ol>
 <li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/59c0cca2d234">Mac上部署Jenkins和打包集成</a></li>
