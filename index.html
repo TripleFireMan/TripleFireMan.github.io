@@ -1,83 +1,375 @@
-<!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>火三</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="火三"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="火三"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮"><meta property="og:type" content="blog"><meta property="og:title" content="火三"><meta property="og:url" content="http://example.com/"><meta property="og:site_name" content="火三"><meta property="og:description" content="学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://example.com/img/og_image.png"><meta property="article:author" content="火三"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://example.com/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com"},"headline":"火三","image":["http://example.com/img/og_image.png"],"author":{"@type":"Person","name":"火三"},"publisher":{"@type":"Organization","name":"火三","logo":{"@type":"ImageObject","url":"http://example.com/img/logo.svg"}},"description":"学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮"}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
-  (function () {
-      function switchTab() {
-          if (!location.hash) {
-            return;
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>火三 - 学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜</title><meta name="author" content="火三"><meta name="copyright" content="火三"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮">
+<meta property="og:type" content="website">
+<meta property="og:title" content="火三">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="火三">
+<meta property="og:description" content="学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:author" content="火三">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '火三',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-09-14 08:28:59'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
           }
-
-          const id = '#' + CSS.escape(location.hash.substring(1));
-          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
-          if (!$tabMenu) {
-            return;
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
           }
-
-          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
-          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
-          Array.from($tabMenuContainer.querySelectorAll('a'))
-              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
-              .forEach($content => $content.classList.add('is-hidden'));
-
-          if ($tabMenu) {
-              $tabMenu.parentElement.classList.add('is-active');
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
           }
-          const $activeTab = document.querySelector(id);
-          if ($activeTab) {
-              $activeTab.classList.remove('is-hidden');
-          }
+          return item.value
+        }
       }
-      switchTab();
-      window.addEventListener('hashchange', switchTab, false);
-  })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body class="is-1-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="火三" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item is-active" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-12"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-08-28T09:54:01.777Z" title="8/28/2023, 5:54:01 PM">2023-08-28</time>发表</span><span class="level-item"><time dateTime="2024-04-21T13:53:48.335Z" title="4/21/2024, 9:53:48 PM">2024-04-21</time>更新</span><span class="level-item">20 分钟读完 (大约2980个字)</span></div></div><div class="content"><p>背景介绍</p>
-<p>Django是一个开放源代码的Web应用框架，由Python写成。采用了MTV的框架模式，即模型M，视图V和模版T。它最初是被开发来用于管理劳伦斯出版集团旗下的一些以新闻内容为主的网站的，即是CMS（内容管理系统）软件。并于2005年7月在BSD许可证下发布。这套框架是以比利时的吉普赛爵士吉他手Django Reinhardt来命名的。2019年12月2日，Django 3. 0发布 。目前的django版本是4.2.3</p></div><a class="article-more button is-small is-size-7" href="/2023/08/28/Django%E5%BC%80%E5%8F%91%E5%88%86%E4%BA%AB/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2023-08-28T09:43:01.000Z" title="8/28/2023, 5:43:01 PM">2023-08-28</time>发表</span><span class="level-item"><time dateTime="2024-04-21T13:57:06.732Z" title="4/21/2024, 9:57:06 PM">2024-04-21</time>更新</span><span class="level-item">几秒读完 (大约12个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2023/08/28/Fastlane%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86%E8%AF%81%E4%B9%A6/">Fastlane多设备管理证书</a></p><div class="content"><p><img src="/2023/08/28/Fastlane%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86%E8%AF%81%E4%B9%A6/c96d86b8.png"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-08-22T07:02:50.000Z" title="8/22/2022, 3:02:50 PM">2022-08-22</time>发表</span><span class="level-item"><time dateTime="2024-04-21T11:43:38.820Z" title="4/21/2024, 7:43:38 PM">2024-04-21</time>更新</span><span class="level-item">5 分钟读完 (大约756个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/08/22/ReactNative%E6%96%B0%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/">ReactNative新架构分享</a></p><div class="content"><h2 id="RN的前世今生123"><a href="#RN的前世今生123" class="headerlink" title="RN的前世今生123"></a>RN的前世今生123</h2><p><strong>React Native是2013年在facebook的内部黑客马拉松中诞生的。到今年2022年新架构，已经整整10年。</strong></p></div><a class="article-more button is-small is-size-7" href="/2022/08/22/ReactNative%E6%96%B0%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-08-09T03:18:34.000Z" title="8/9/2022, 11:18:34 AM">2022-08-09</time>发表</span><span class="level-item"><time dateTime="2024-04-21T11:23:25.762Z" title="4/21/2024, 7:23:25 PM">2024-04-21</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E8%BD%AC/">转</a></span><span class="level-item">7 分钟读完 (大约1092个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/08/09/Tree%E5%91%BD%E4%BB%A4%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">Tree命令及简单使用</a></p><div class="content"><p>我用的是阿里云服务器，CentOS7，默认没有tree这个命令，需要安装，用下面的命令就可以安装：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install tree</span><br></pre></td></tr></table></figure>
-<p>怎么样使用tree这个命令<br>其实有个非常简单的办法，就是直接查看关于tree的帮助，输入下面的命令，可以查看关于tree命令的帮助信息</p></div><a class="article-more button is-small is-size-7" href="/2022/08/09/Tree%E5%91%BD%E4%BB%A4%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-08-08T00:51:50.067Z" title="8/8/2022, 8:51:50 AM">2022-08-08</time>发表</span><span class="level-item"><time dateTime="2022-09-02T08:57:03.873Z" title="9/2/2022, 4:57:03 PM">2022-09-02</time>更新</span><span class="level-item">9 分钟读完 (大约1382个字)</span></div></div><div class="content"><h3 id="技术交流大纲"><a href="#技术交流大纲" class="headerlink" title="技术交流大纲"></a>技术交流大纲</h3><h3 id="交流背景"><a href="#交流背景" class="headerlink" title="交流背景"></a>交流背景</h3><p>入职一个多月，通过阅读公司的技术资料，结合自己多年的开发经验，分享一些好的，对项目有益的想法及落地方案，此外对项目的理解，提一些个人的看法，有什么不足/不对的地方，希望各位同事查漏补缺</p></div><a class="article-more button is-small is-size-7" href="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-07-29T02:41:37.000Z" title="7/29/2022, 10:41:37 AM">2022-07-29</time>发表</span><span class="level-item"><time dateTime="2022-08-01T08:48:34.058Z" title="8/1/2022, 4:48:34 PM">2022-08-01</time>更新</span><span class="level-item">3 分钟读完 (大约425个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/07/29/ReactNative%E5%AD%A6%E4%B9%A0%E5%9B%9B-State/">ReactNative学习四:State</a></p><div class="content"><h1 id="如何让页面动起来？"><a href="#如何让页面动起来？" class="headerlink" title="如何让页面动起来？"></a>如何让页面动起来？</h1><p>如图是一个简单的购物车页面的UI，分别用来展示商品的名称、价格和数量。</p></div><a class="article-more button is-small is-size-7" href="/2022/07/29/ReactNative%E5%AD%A6%E4%B9%A0%E5%9B%9B-State/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-07-29T00:57:38.000Z" title="7/29/2022, 8:57:38 AM">2022-07-29</time>发表</span><span class="level-item"><time dateTime="2022-08-01T08:17:12.852Z" title="8/1/2022, 4:17:12 PM">2022-08-01</time>更新</span><span class="level-item">4 分钟读完 (大约549个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/07/29/ReactNative%E5%AD%A6%E4%B9%A0%E4%B8%89-%E6%A0%B7%E5%BC%8FStyle/">ReactNative学习三:样式Style</a></p><div class="content"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>组件只是页面的架子，如果不使用样式，就会平铺在页面上，没有什么体验可言。</p></div><a class="article-more button is-small is-size-7" href="/2022/07/29/ReactNative%E5%AD%A6%E4%B9%A0%E4%B8%89-%E6%A0%B7%E5%BC%8FStyle/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-07-28T00:41:45.000Z" title="7/28/2022, 8:41:45 AM">2022-07-28</time>发表</span><span class="level-item"><time dateTime="2022-07-28T08:25:31.908Z" title="7/28/2022, 4:25:31 PM">2022-07-28</time>更新</span><span class="level-item">6 分钟读完 (大约851个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/07/28/iOS%E6%8E%A5%E5%85%A5fastlane%E7%AE%80%E6%98%93%E7%89%88%E6%95%99%E7%A8%8B/">iOS接入fastlane简易版教程</a></p><div class="content"><h2 id="fastlane-是什么？"><a href="#fastlane-是什么？" class="headerlink" title="fastlane 是什么？"></a>fastlane 是什么？</h2><p>一套使用Ruby写的自动化工具集，旨在简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App</p></div><a class="article-more button is-small is-size-7" href="/2022/07/28/iOS%E6%8E%A5%E5%85%A5fastlane%E7%AE%80%E6%98%93%E7%89%88%E6%95%99%E7%A8%8B/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-07-27T08:43:09.000Z" title="7/27/2022, 4:43:09 PM">2022-07-27</time>发表</span><span class="level-item"><time dateTime="2022-08-01T09:02:11.200Z" title="8/1/2022, 5:02:11 PM">2022-08-01</time>更新</span><span class="level-item">6 分钟读完 (大约829个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/07/27/ReactNative%E5%AD%A6%E4%B9%A0%E4%BA%8C-Component/">ReactNative学习二-Component</a></p><div class="content"><h1 id="搭建静态页面的原则"><a href="#搭建静态页面的原则" class="headerlink" title="搭建静态页面的原则"></a>搭建静态页面的原则</h1><h2 id="单一责任原则"><a href="#单一责任原则" class="headerlink" title="单一责任原则"></a>单一责任原则</h2><pre><code>每个组件都应该只有一个单一的功能，并且这个组件和其他组件没有相互依赖
-</code></pre></div><a class="article-more button is-small is-size-7" href="/2022/07/27/ReactNative%E5%AD%A6%E4%B9%A0%E4%BA%8C-Component/#more">阅读更多</a></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2022-07-26T09:55:22.000Z" title="7/26/2022, 5:55:22 PM">2022-07-26</time>发表</span><span class="level-item"><time dateTime="2024-04-21T11:25:43.482Z" title="4/21/2024, 7:25:43 PM">2024-04-21</time>更新</span><span class="level-item">2 分钟读完 (大约247个字)</span></div></div><p class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/07/26/iOS%E9%85%8D%E7%BD%AE%E7%BB%9F%E4%B8%80%E6%8E%A8%E9%80%81%E8%AF%81%E4%B9%A6Token-Authenticatio%E6%96%B9%E5%BC%8F/">iOS配置统一推送证书Token Authenticatio方式</a></p><div class="content"><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><blockquote>
-<p>由于开发者账号下面配置的app越来越多，对于推送证书的配置有了新的要求，证书尽可能只需要配置一次就可以。</p>
-</blockquote></div><a class="article-more button is-small is-size-7" href="/2022/07/26/iOS%E9%85%8D%E7%BD%AE%E7%BB%9F%E4%B8%80%E6%8E%A8%E9%80%81%E8%AF%81%E4%B9%A6Token-Authenticatio%E6%96%B9%E5%BC%8F/#more">阅读更多</a></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/page/0/">上一页</a></div><div class="pagination-next"><a href="/page/2/">下一页</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/">1</a></li><li><a class="pagination-link" href="/page/2/">2</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/5/">5</a></li></ul></nav></div><!--!--><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="火三" height="28"></a><p class="is-size-7"><span>&copy; 2024 火三</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
-      window.cookieconsent.initialise({
-        type: "info",
-        theme: "edgeless",
-        static: false,
-        position: "bottom-left",
-        content: {
-          message: "此网站使用Cookie来改善您的体验。",
-          dismiss: "知道了！",
-          allow: "允许使用Cookie",
-          deny: "拒绝",
-          link: "了解更多",
-          policy: "Cookie政策",
-          href: "https://www.cookiesandyou.com/",
-        },
-        palette: {
-          popup: {
-            background: "#edeff5",
-            text: "#838391"
-          },
-          button: {
-            background: "#4b81e8"
-          },
-        },
-      });
-    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
-            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
-        });</script></body></html>
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="火三"><span class="site-name">火三</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">火三</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/09/13/%E4%BD%BF%E7%94%A8MacMini%E4%BD%9C%E4%B8%BA%E6%89%93%E5%8C%85%E6%9C%BA-Jenkins%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%93%E5%8C%85/" title="使用MacMini作为打包机+Jenkins进行自动化打包">使用MacMini作为打包机+Jenkins进行自动化打包</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-09-13T08:51:17.000Z" title="发表于 2024-09-13 16:51:17">2024-09-13</time></span></div><div class="content">使用MacMini作为打包机+Jenkins进行自动化打包背景
+团队目前4个人，iOS（2）安卓（2），App打包需要占用研发的电脑，以iOS为例，打包一次司机端的ipa包，大概需要4-5分钟，打包一次货主端的ipa包，大概需要3分钟，基于这种情况，将之前申请的macMini，安装上jenkins的服务，配置上打包任务。这样每次打包就不用占用开发电脑，提高效率
+
+最终效果Jenkins配置主页面
+钉钉发送效果图
+思路
+踩坑
+jdk无法下载
+ jdk是属于oracle公司的产品，看了之前的文档让下载jdk11，但是jdk11没有找到，只找到了Java11，而且还是需要登录才能下载，于是去注册了oracle的账号，结果注册之后，仍然不能下载报404，最后解决办法是下载了图二所示的JDK22，安装后正常使用
+
+
+局域网无法访问指定ip对用的jenkins
+这个是由于jenkins开放ip默认是127.0.0.1.需要将开放ip更改为0.0.0.0，参考资料二解决此问题
+
+
+钉钉插件发送消息报错的问题
+
+
+该问题是由于钉钉插件，保存有问题，已经保存的消息未生效，一直发送的是空消息导致，解决办法 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2024/04/22/vue%E5%AD%A6%E4%B9%A0%E3%80%901%E3%80%91/" title="vue学习【1】">vue学习【1】</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-04-22T06:24:47.000Z" title="发表于 2024-04-22 14:24:47">2024-04-22</time></span></div><div class="content">学习vue的第一天，从web开发开始1.1 学习资料
+学习链接mozilla
+
+html常用标签介绍
+12345678910111213141516171819202122&lt;!doctype html&gt;&lt;html lang=&quot;en-US&quot;&gt;  &lt;head&gt;    &lt;meta charset=&quot;utf-8&quot; /&gt;    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;    &lt;title&gt;My test page&lt;/title&gt;  &lt;/head&gt;  &lt;body&gt;    &lt;img src=&quot;images/firefox-icon.png&quot; alt=&quot;My test image&quot; /&gt;  &lt;/body&gt;&lt;/html&gt;&lt;!DOCTYPE html&gt;-- 文档类型，这 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/08/28/Django%E5%BC%80%E5%8F%91%E5%88%86%E4%BA%AB/" title="无题">无题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-28T09:54:01.777Z" title="发表于 2023-08-28 17:54:01">2023-08-28</time></span></div><div class="content">背景介绍
+Django是一个开放源代码的Web应用框架，由Python写成。采用了MTV的框架模式，即模型M，视图V和模版T。它最初是被开发来用于管理劳伦斯出版集团旗下的一些以新闻内容为主的网站的，即是CMS（内容管理系统）软件。并于2005年7月在BSD许可证下发布。这套框架是以比利时的吉普赛爵士吉他手Django Reinhardt来命名的。2019年12月2日，Django 3. 0发布 。目前的django版本是4.2.3
+
+官网地址MTV 模型Django 的 MTV 模式本质上和 MVC 是一样的，也是为了各组件间保持松耦合关系，只是定义上有些许不同，Django 的 MTV 分别是指：● M 表示模型（Model）：编写程序应有的功能，负责业务对象与数据库的映射(ORM)。● T 表示模板 (Template)：负责如何把页面(html)展示给用户。● V 表示视图（View）：负责业务逻辑，并在适当时候调用 Model和 Template。除了以上三层之外，还需要一个 URL 分发器，它的作用是将一个个 URL 的页面请求分发给不同的 View 处理，View 再调用相 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2023/08/28/Fastlane%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86%E8%AF%81%E4%B9%A6/" title="Fastlane多设备管理证书">Fastlane多设备管理证书</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-28T09:43:01.000Z" title="发表于 2023-08-28 17:43:01">2023-08-28</time></span></div><div class="content">
+</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2022/08/22/ReactNative%E6%96%B0%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/" title="ReactNative新架构分享">ReactNative新架构分享</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-22T07:02:50.000Z" title="发表于 2022-08-22 15:02:50">2022-08-22</time></span></div><div class="content">RN的前世今生123React Native是2013年在facebook的内部黑客马拉松中诞生的。到今年2022年新架构，已经整整10年。
+
+
+### RN适用什么场景
+* 业务更新迭代较快的团队与出海团队。
+* 既要支持动态更新，又要支持复杂业务的场景。
+
+
+为什么要学习 React Native ？
+React Native 是一个非常流行的跨端框架，开发者认可度很高
+
+2. React Native 是一个跨领域的融合技术，它是你现有技术的自然延伸。3. 更为重要的是，今年RN将会发布新架构。新架构将带来以下三个方面的优势
+
+React Native 新架构的启动性能会有 2 倍左右的提升。
+React Native 新架构的通信性能会有 3 倍左右的提升。
+React Native 新架构的渲染流水有了很大的变化，这会带来更好的用户体验。
+
+RN的技术栈下图是RN会涉及到的知识图谱
+
+
+
+
+序号
+内容
+
+
+
+1
+开发语言、React 框架、开发必备工具这些预备知识
+
+
+2
+React Native 本身的知识， 组件等
+
+
+3
+工作流中的实操知识
+
+
+
+
+如何搭建一个RN页面 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2022/08/09/Tree%E5%91%BD%E4%BB%A4%E5%8F%8A%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" title="Tree命令及简单使用">Tree命令及简单使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-09T03:18:34.000Z" title="发表于 2022-08-09 11:18:34">2022-08-09</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%BD%AC/">转</a></span></div><div class="content">我用的是阿里云服务器，CentOS7，默认没有tree这个命令，需要安装，用下面的命令就可以安装：
+1sudo yum install tree
+怎么样使用tree这个命令其实有个非常简单的办法，就是直接查看关于tree的帮助，输入下面的命令，可以查看关于tree命令的帮助信息
+
+1tree --help
+最简单的使用办法是直接输入tree命令，就会自动给我们以树形的形式列出当前目录的文件和文件夹，不加任何参数，它会自动列表当前目录下面所有深度级别的文件和目录。
+几个比较常规的用法
+
+显示目录结构1tree
+
+
+
+
+
+包含隐藏文件
+1tree -a
+
+
+控制深度（假设为2）
+1tree -L 2
+
+
+
+
+更多的选项
+
+
+
+选项
+说明
+
+
+
+-a
+显示所有文件，包含隐藏文件。
+
+
+-d
+只显示目录。
+
+
+-l
+跟踪符号链接，如果链接的是一个目录，则当成目录处理。
+
+
+-f
+显示完整路径。
+
+
+-x
+只显示本文件系统。
+
+
+-L level
+控制显示的目录深度。
+
+
+-R
+在下级目录中，再次执行 tree 命令并且加上 ‘-o 00Tree.html’选项，配合-L,-H使用。
+
+
+-P  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2022/08/08/%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81/" title="无题">无题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-08T00:51:50.067Z" title="发表于 2022-08-08 08:51:50">2022-08-08</time></span></div><div class="content">技术交流大纲交流背景入职一个多月，通过阅读公司的技术资料，结合自己多年的开发经验，分享一些好的，对项目有益的想法及落地方案，此外对项目的理解，提一些个人的看法，有什么不足/不对的地方，希望各位同事查漏补缺
+
+
+关于调试工具DoraemonKit
+
+
+
+
+目前在建龙物流端，接入了Dokit，此外根据 
+
+官方文档设计了两个插件，
+
+一个是用来切换正式和测试环境，
+一个是根据页面classname来跳转对于空页面（用于调试UI）
+
+接入说明:插件的接入主要分下面几步，第一步： 创建一个插件Vc，用来承载插件功能,具体开发功能，用户自定义第二步： 实例化一个插件类，实现协议DoraemonPluginProtocol
+1234// 该代理方法是点击插件按钮时会触发- (void) pluginDidLoad&#123;    /// 如创建页面，push到堆栈中&#125;
+第三步：将插件挂载到dokit的首页上
+1[[DoraemonManager shareInstance] addPluginWithTitle:@&quot;环境切换&quot; icon:@&quot;doraemo ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2022/07/29/ReactNative%E5%AD%A6%E4%B9%A0%E5%9B%9B-State/" title="ReactNative学习四:State">ReactNative学习四:State</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-29T02:41:37.000Z" title="发表于 2022-07-29 10:41:37">2022-07-29</time></span></div><div class="content">如何让页面动起来？如图是一个简单的购物车页面的UI，分别用来展示商品的名称、价格和数量。
+
+
+选择状态这个页面需要一个标示页面请求正常or失败的状态，这里使用枚举值
+123456const RequestStatus = &#123;    IDLE = &#x27;IDLE&#x27;,    PENDING = &#x27;PENDING&#x27;,    SUCCESS = &#x27;SUCCESS&#x27;,    ERROR = &#x27;ERROR&#x27;&#125;
+此外还需要一个列表对象用来展示数据,采用
+1const [products, setProduct] = useState([]);
+即一个枚举和一个数组来展示页面。
+状态更新基础数据类型的状态更新还是看下面的代码，以更新数量为例，首先注册了状态 “count”,然后在组件的返回函数里面，通过按钮的点击事件，调用setCount(count+1)，来达到更新count值的效果。
+12345678910export default function count()&#123;    const [c ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2022/07/29/ReactNative%E5%AD%A6%E4%B9%A0%E4%B8%89-%E6%A0%B7%E5%BC%8FStyle/" title="ReactNative学习三:样式Style">ReactNative学习三:样式Style</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-29T00:57:38.000Z" title="发表于 2022-07-29 08:57:38">2022-07-29</time></span></div><div class="content">前言组件只是页面的架子，如果不使用样式，就会平铺在页面上，没有什么体验可言。
+
+
+React Native的组件样式有哪些?React Native的Flex布局有哪些特点?React Natice的样式代码怎么管理?
+
+一、组件样式1.1 通用样式大部分的React组件都有样式属性，style，例如改变文字
+1234// 文字颜色&lt;Text style=&#123;&#123;color:&#x27;red&#x27;&#125;&#125;&gt;// 圆角边框&lt;Text style=&#123;&#123;borderColor:&#x27;gray&#x27;,borderWidth:1,borderRadius:5&#125;&#125;&gt;
+下图是常见的通用样式和组件样式的一些继承关系
+1.2 私有样式View的样式，可以认为是通用样式，如Layout、Transform、Shadow、backgroundColor、opacity。像Text、Image、除了继承自View的通用样式以外，还有如font、color、lineHeight等等这些样式，都可以 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2022/07/28/iOS%E6%8E%A5%E5%85%A5fastlane%E7%AE%80%E6%98%93%E7%89%88%E6%95%99%E7%A8%8B/" title="iOS接入fastlane简易版教程">iOS接入fastlane简易版教程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-28T00:41:45.000Z" title="发表于 2022-07-28 08:41:45">2022-07-28</time></span></div><div class="content">fastlane 是什么？一套使用Ruby写的自动化工具集，旨在简化Android和iOS的部署过程，自动化你的工作流。它可以简化一些乏味、单调、重复的工作，像截图、代码签名以及发布App
+
+fastlane 可以干什么
+
+
+插件
+功能
+
+
+
+gym
+是fastlane提供的打包工具。
+
+
+snapshot
+生成多个设备的截图文件
+
+
+frameit
+对截图加一层物理边框
+
+
+increment_build_number
+自增build number 然后与之对应的get_build_number。Version number同理。
+
+
+cert：
+创建一个新的代码签名证书
+
+
+sigh：
+生成一个provisioning profile并保存打当前文件
+
+
+pem：
+确保当前的推送证书是活跃的，如果没有会帮你生成一个新的
+
+
+match：
+在团队中同步证书和描述文件。(这是一种全新的管理证书的方式)
+
+
+testflight：
+上传ipa到testflight
+
+
+deliver：
+上传ipa到AppStore
+
+
+fastlane 安装指南gem 安装fastlane
+1sudo  ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">火三</div><div class="author-info__description">学如逆水行舟，不进则退，何况逝者如斯夫，不舍昼夜兮</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">43</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/09/13/%E4%BD%BF%E7%94%A8MacMini%E4%BD%9C%E4%B8%BA%E6%89%93%E5%8C%85%E6%9C%BA-Jenkins%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%93%E5%8C%85/" title="使用MacMini作为打包机+Jenkins进行自动化打包">使用MacMini作为打包机+Jenkins进行自动化打包</a><time datetime="2024-09-13T08:51:17.000Z" title="发表于 2024-09-13 16:51:17">2024-09-13</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2024/04/22/vue%E5%AD%A6%E4%B9%A0%E3%80%901%E3%80%91/" title="vue学习【1】">vue学习【1】</a><time datetime="2024-04-22T06:24:47.000Z" title="发表于 2024-04-22 14:24:47">2024-04-22</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/08/28/Django%E5%BC%80%E5%8F%91%E5%88%86%E4%BA%AB/" title="无题">无题</a><time datetime="2023-08-28T09:54:01.777Z" title="发表于 2023-08-28 17:54:01">2023-08-28</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2023/08/28/Fastlane%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86%E8%AF%81%E4%B9%A6/" title="Fastlane多设备管理证书">Fastlane多设备管理证书</a><time datetime="2023-08-28T09:43:01.000Z" title="发表于 2023-08-28 17:43:01">2023-08-28</time></div></div><div class="aside-list-item"><div class="content"><a class="title" href="/2022/08/22/ReactNative%E6%96%B0%E6%9E%B6%E6%9E%84%E5%88%86%E4%BA%AB/" title="ReactNative新架构分享">ReactNative新架构分享</a><time datetime="2022-08-22T07:02:50.000Z" title="发表于 2022-08-22 15:02:50">2022-08-22</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%BD%AC/"><span class="card-category-list-name">转</span><span class="card-category-list-count">2</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/RN/" style="font-size: 1.1em; color: #999">RN</a> <a href="/tags/python/" style="font-size: 1.5em; color: #99a9bf">python</a> <a href="/tags/ReactNative/" style="font-size: 1.4em; color: #99a5b6">ReactNative</a> <a href="/tags/%E4%B8%89%E6%96%B9%E5%BA%93%E7%A0%94%E7%A9%B6/" style="font-size: 1.3em; color: #99a1ac">三方库研究</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 1.1em; color: #999">翻译</a> <a href="/tags/iOS/" style="font-size: 1.2em; color: #999da3">iOS</a> <a href="/tags/Hexo/" style="font-size: 1.2em; color: #999da3">Hexo</a> <a href="/tags/%E7%82%B9%E7%82%B9%E6%BB%B4%E6%BB%B4/" style="font-size: 1.5em; color: #99a9bf">点点滴滴</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 1.2em; color: #999da3">工具</a> <a href="/tags/coredata%E5%AD%A6%E4%B9%A0/" style="font-size: 1.2em; color: #999da3">coredata学习</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">八月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">八月 2022</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/07/"><span class="card-archive-list-date">七月 2022</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/10/"><span class="card-archive-list-date">十月 2019</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2019/09/"><span class="card-archive-list-date">九月 2019</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">43</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-09-14T00:28:59.478Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 火三</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
